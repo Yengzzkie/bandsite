@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background: #323232;
+  color: #ffffff;
+  width: 100%;
+  padding-top: 0.5rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 500;
+}
+nav .nav__logo {
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 2.5rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+}
+nav ul {
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+nav ul li {
+  position: relative;
+  letter-spacing: 1.2px;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  padding-bottom: 1.5rem;
+  cursor: pointer;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+}
+nav ul li::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  background: #ffffff;
+  height: 3px;
+  width: 0%;
+  transition: all 0.4s linear;
+}
+nav ul li:hover {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+}
+nav ul li:hover::after {
+  width: 100%;
+}
+
+.hero {
+  position: relative;
+  background: url("../assets/images/hero-bio.jpg") center/cover no-repeat;
+  width: 100vw;
+  height: 50vh;
+  -webkit-backdrop-filter: gr;
+          backdrop-filter: gr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+.hero h1 {
+  color: #ffffff;
+  font-size: 3rem;
+  margin-right: auto;
+  margin-left: 4rem;
+  z-index: 999;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 500;
+}
+@media (max-width: 767px) {
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-left: 2rem;
+  }
+}
+
+main {
+  width: 100vw;
+  padding: 16px 24px;
+  overflow-x: hidden;
+}
+main .main__header {
+  margin: 1rem 0;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 500;
+}
+main img {
+  width: 100%;
+}
+main .main__quote {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  line-height: 1.7rem;
+  letter-spacing: 1px;
+  padding: 0.5rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 500;
+}
+main .main__quote .main__quote--footer {
+  font-size: 18px;
+  margin-top: 1rem;
+}
+main .content {
+  margin: 1.5rem 0;
+}
+main .content .content__title {
+  margin-bottom: 1rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+}
+main .content .content__description, main .content .content__description2 {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
+}
+main .content .content__description2 {
+  margin-top: 1rem;
+}/*# sourceMappingURL=bio.css.map */

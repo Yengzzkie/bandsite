@@ -1,0 +1,70 @@
+// @import "../../assets/fonts/NunitoSans-Regular.woff";
+// @import "../../assets/fonts/NunitoSans-Medium.woff";
+// @import "../../assets/fonts/NunitoSans-Bold.woff";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Variables
+$primary-dark: #323232;
+$primary-light: #afafaf;
+$primary-content: #ffffff;
+$secondary-dark: #000000;
+$secondary-light: #e1e1e1;
+$secondary-content: #fafafa;
+$nunito-light: "Nunito Sans", sans-serif;
+$nunito-regular: "Nunito Sans", sans-serif;
+$nunito-bold: "Nunito Sans", sans-serif;
+
+// MIXINS
+@mixin flex-center($justify: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+  }
+
+@mixin cta-default {
+  background: $primary-dark;
+  color: $primary-content;
+}
+
+@mixin cta-hover {
+  background: $secondary-dark;
+  color: $primary-light;
+}
+
+@mixin font-light {
+  font-family: $nunito-light;
+  font-weight: 300;
+}
+
+@mixin font-regular {
+  font-family: $nunito-regular;
+  font-weight: 500;
+}
+
+@mixin font-bold {
+  font-family: $nunito-bold;
+  font-weight: 700;
+}
+
+@mixin mobile {
+    @media (max-width: 767px) {
+        @content
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 768px) and (max-width: 1279) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1280px) {
+        @content;
+    }
+}
