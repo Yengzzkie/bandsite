@@ -6,7 +6,13 @@ nav {
   color: $primary-content;
   width: 100%;
   padding-top: 0.5rem;
+  height: fit-content;
   @include font-regular;
+  @include tablet {
+    padding: 8px 16px 0 16px;
+    height: 100px;
+    @include flex-center(flex-start);
+  }
 
   .nav__logo {
     color: $primary-content;
@@ -20,16 +26,28 @@ nav {
     list-style: none;
     text-decoration: none;
     @include flex-center(space-evenly);
+    @include tablet {
+      @include flex-center();
+      height: 100%;
+      margin-left: 36px;
+    }
 
     li {
       position: relative;
       letter-spacing: 1.2px;
       width: 100%;
+      min-width: 120px;
       text-align: center;
       font-size: 1.2rem;
       padding-bottom: 1.5rem;
       cursor: pointer;
       @include font-light();
+      @include tablet {
+        @include flex-center();
+        height: 100%;
+        padding-bottom: 0;
+        margin: auto 50px auto 0;
+      }
 
       &::after {
         position: absolute;
@@ -56,11 +74,14 @@ nav {
 // HERO
 .hero {
   position: relative;
-  background: url('../assets/images/hero-bio.jpg') center/cover no-repeat;
+  background: url("../assets/images/hero-bio.jpg") center/cover no-repeat;
   width: 100vw;
-  height: 50vh;
+  height: 25vh;
   backdrop-filter: gr;
   @include flex-center();
+  @include tablet {
+    height: 75vh;
+  }
 
   &::before {
     content: "";
@@ -75,14 +96,14 @@ nav {
 
   h1 {
     color: $primary-content;
-    font-size: 3rem;
+    font-size: 24px;
     margin-right: auto;
-    margin-left: 4rem;
+    margin-left: 2rem;
     z-index: 999;
     @include font-regular;
-    @include mobile {
-      font-size: 2.5rem;
-      margin-left: 2rem;
+    @include tablet {
+      font-size: 60px;
+      margin-left: 4rem;
     }
   }
 }
@@ -92,47 +113,165 @@ main {
   width: 100vw;
   padding: 16px 24px;
   overflow-x: hidden;
+  @include tablet {
+    @include grid-container($columns: repeat(12, minmax(auto, 1fr)), $gap: 24px);
+  }
 
   .main__header {
     margin: 1rem 0;
+    font-size: 24px;
     @include font-regular();
+    @include tablet {
+      margin: 2rem 0 1rem 2rem;
+      font-size: 36px;
+      grid-column: span 12;
+    }
   }
 
   img {
     width: 100%;
+    @include tablet {
+      grid-column: 2/12;
+    }
   }
 
   .main__quote {
-    font-size: 1.2rem;
-    margin-top: .5rem;
-    line-height: 1.7rem;
+    font-size: 13px;
+    margin-top: 0.5rem;
+    line-height: 18px;
     letter-spacing: 1px;
-    padding: .5rem;
     @include font-regular;
+    @include tablet {
+      font-size: 20px;
+      line-height: 28px;
+      grid-column: 2/12;
+      @include font-semibold();
+    }
 
     .main__quote--footer {
-      font-size: 18px;
-      margin-top: 1rem;
+      font-size: 13px;
+      margin-top: 0.5rem;
+      @include tablet {
+        font-size: 18px;
+        @include font-regular();
+      }
     }
   }
 
   .content {
     margin: 1.5rem 0;
+    @include tablet {
+      @include grid-container($columns: repeat(12, 1fr));
+      grid-column: 2/12;
+    }
+
     .content__title {
+      font-size: 14px;
       margin-bottom: 1rem;
-      @include font-light;
+      @include font-regular;
+      @include tablet {
+        font-size: 24px;
+        grid-column: span 12;
+      }
     }
-  
+
     .content__description {
-      font-size: 1.2rem;
-      line-height: 1.5rem;
+      font-size: 13px;
+      line-height: 22px;
       @include font-light;
+      @include tablet {
+        font-size: 14px;
+        grid-column: span 6;
+      }
     }
-  
+
     .content__description2 {
       margin-top: 1rem;
-      @extend .content__description
+      font-size: 13px;
+      line-height: 22px;
+      @include font-light;
+      @include tablet {
+        margin-top: 0;
+        font-size: 14px;
+        grid-column: span 6;
+      }
     }
   }
 }
 
+// IMAGE GRID
+.photo-gallery {
+  background: $secondary-content;
+  width: 100%;
+  @include tablet {
+    padding: 20px 0;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-left: 16px;
+    padding-top: 16px;
+    @include font-regular();
+    @include tablet {
+      font-size: 36px;
+      margin-left: 56px;
+    }
+  }
+
+  .image-container {
+    padding: 16px;
+    @include grid-container();
+    @include tablet {
+      @include grid-container(repeat(12, minmax(auto, 1fr)), 16px);
+      margin: 0 36px;
+    }
+  
+    img {
+      grid-column: span 6;
+      width: 100%;
+      @include tablet {
+        grid-column: span 4;
+      }
+    }
+  }
+}
+
+
+// FOOTER
+footer {
+  background: $primary-dark;
+  color: $primary-content;
+  padding: 24px 16px;
+  @include font-light();
+
+  > * {
+    margin-bottom: 1rem;
+  }
+
+  .footer__header {
+    font-size: 24px;
+    @include font-regular();
+  }
+
+  .footer__image-container {
+
+    img {
+      margin-right: 1.5rem;
+    }
+  }
+
+  .footer__subheader {
+    font-size: 14px;
+    margin-top: 2rem;
+    @include font-bold();
+  }
+
+  .footer__logo {
+    margin-top: 3rem;
+    @include font-light();
+  }
+
+  .copyright {
+    font-size: 13px;
+  }
+}
