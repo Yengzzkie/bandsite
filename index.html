@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/bio.css" />
-    <title>BandSite</title>
+    <title>BeesKnees</title>
   </head>
   <body>
     <!-- NAVBAR -->
@@ -18,7 +18,7 @@
 
     <!-- HERO -->
     <section class="hero">
-      <h1>The Bees Knees</h1>
+      <h1 class="hero__header">The Bees Knees</h1>
     </section>
 
     <!-- MAIN CONTENT -->
@@ -60,7 +60,7 @@
 
     <section class="photo-gallery">
       <h1>Photo Gallery</h1>
-      <div class="image-container">
+      <div class="image-grid">
         <img src="./assets/images/Photo-gallery-1.jpg" alt="image-1" />
         <img src="./assets/images/Photo-gallery-2.jpg" alt="image-2" />
         <img src="./assets/images/Photo-gallery-3.jpg" alt="image-3" />
@@ -74,40 +74,50 @@
     </section>
 
     <footer>
+      <!-- 1 -->
       <h1 class="footer__header">Get in Touch</h1>
+
+      <!-- 2 -->
       <div class="footer__image-container">
         <img src="./assets/icons/Icon-instagram.svg" alt="instagram" />
         <img src="./assets/icons/Icon-facebook.svg" alt="facebook" />
         <img src="./assets/icons/Icon-twitter.svg" alt="twitter" />
       </div>
-      <p class="footer__subheader">The Bees Knees Management</p>
 
-      <div>
-        <p>503 Broadway Penthouse,</p>
-        <p>New York, NY 10012, USA</p>
+      <!-- 3 -->
+      <div class="footer__address">
+        <p class="footer__subheader">The Bees Knees Management</p>
+        <div class="content-block">
+          <p>503 Broadway Penthouse,</p>
+          <p>New York, NY 10012, USA</p>
+        </div>
+        <p>info@thebeesknees.com</p>
       </div>
 
-      <p>info@thebeesknees.com</p>
-
-      <p class="footer__subheader">Limitless Artist Group</p>
-
-      <div>
-        <p>Booking Agent for</p>
-        <p>US / South America / Japan</p>
+      <!-- 4 -->
+      <div class="footer__booking-NA">
+        <p class="footer__subheader">Limitless Artist Group</p>
+        <div class="content-block">
+          <p>Booking Agent for</p>
+          <p>US / South America / Japan</p>
+        </div>
+        <p>bookings@limitlessag.com</p>
       </div>
 
-      <p>bookings@limitlessag.com</p>
-
-      <p class="footer__subheader">ARCH Entertainment</p>
-
-      <div>
-        <p>Booking Agent for</p>
-        <p>UK / EU / AU</p>
+      <!-- 5 -->
+      <div class="footer__booking-EU">
+        <p class="footer__subheader">ARCH Entertainment</p>
+        <div class="content-block">
+          <p>Booking Agent for</p>
+          <p>UK / EU / AU</p>
+        </div>
+        <p>bookings@archentertainment.com</p>
       </div>
 
-      <p>bookings@archentertainment.com</p>
-
+      <!-- 6 -->
       <h1 class="footer__logo">BANDSITE</h1>
+
+      <!-- 7 -->
       <p class="copyright">Copyright The Bees Knees &copy; 2023 All Rights Reserved</p>
     </footer>
   </body>

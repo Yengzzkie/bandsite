@@ -1,11 +1,32 @@
-// @import "../../assets/fonts/NunitoSans-Regular.woff";
-// @import "../../assets/fonts/NunitoSans-Medium.woff";
-// @import "../../assets/fonts/NunitoSans-Bold.woff";
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+// Fonts
+@font-face {
+  font-family: "Nunito-Light";
+  src: url("/assets/fonts/NunitoSans-Medium.woff") format("woff"),
+    url("/assets/fonts/NunitoSans-Medium.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nunito-Bold";
+  src: url("/assets/fonts/NunitoSans-Bold.woff") format("woff"),
+    url("/assets/fonts/NunitoSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nunito-Regular";
+  src: url("/assets/fonts/NunitoSans-Regular.woff") format("woff"),
+    url("/assets/fonts/NunitoSans-Regular.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
 }
 
 // Variables
@@ -15,18 +36,20 @@ $primary-content: #ffffff;
 $secondary-dark: #000000;
 $secondary-light: #e1e1e1;
 $secondary-content: #fafafa;
-$nunito-light: "Nunito Sans", sans-serif;
-$nunito-regular: "Nunito Sans", sans-serif;
-$nunito-bold: "Nunito Sans", sans-serif;
+$nunito-light: "Nunito-Light", sans-serif;
+$nunito-regular: "Nunito-Regular", sans-serif;
+$nunito-bold: "Nunito-Bold", sans-serif;
+$nav-height: 130px;
 
 body {
-  font-family: 'Nunito Sans', sans-serif;
+  overflow-x: hidden;
 }
 
 // MIXINS
-@mixin grid-container($columns: repeat(6, minmax(auto, 1fr)), $gap: 16px) {
+@mixin grid-container($columns: repeat(6, minmax(auto, 1fr)), $gap: 24px) {
   display: grid;
   grid-template-columns: $columns;
+  grid-auto-rows: minmax(100px, auto);
   gap: $gap;
 }
 
@@ -54,12 +77,12 @@ body {
 
 @mixin font-regular {
   font-family: $nunito-regular;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 @mixin font-semibold {
   font-family: $nunito-bold;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 @mixin font-bold {
@@ -67,6 +90,12 @@ body {
   font-weight: 700;
 }
 
+@mixin flex-nav {
+  height: $nav-height;
+  @include flex-center(flex-start);
+}
+
+// Screen media queries
 @mixin mobile {
   @media (max-width: 767px) {
     @content;

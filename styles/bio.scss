@@ -9,9 +9,10 @@ nav {
   height: fit-content;
   @include font-regular;
   @include tablet {
-    padding: 8px 16px 0 16px;
-    height: 100px;
-    @include flex-center(flex-start);
+    padding: 0 48px;
+  }
+  @include desktop() {
+    padding: 0 10rem;
   }
 
   .nav__logo {
@@ -23,19 +24,18 @@ nav {
   }
 
   ul {
+    height: 100%;
     list-style: none;
     text-decoration: none;
     @include flex-center(space-evenly);
-    @include tablet {
-      @include flex-center();
-      height: 100%;
-      margin-left: 36px;
-    }
+    @include tablet();
+    @include desktop();
 
     li {
       position: relative;
       letter-spacing: 1.2px;
       width: 100%;
+      height: 100%;
       min-width: 120px;
       text-align: center;
       font-size: 1.2rem;
@@ -44,9 +44,13 @@ nav {
       @include font-light();
       @include tablet {
         @include flex-center();
-        height: 100%;
-        padding-bottom: 0;
-        margin: auto 50px auto 0;
+        padding: unset;
+        margin: auto 25px;
+      }
+      @include desktop() {
+        @include flex-center();
+        padding: unset;
+        margin: auto 50px;
       }
 
       &::after {
@@ -76,11 +80,13 @@ nav {
   position: relative;
   background: url("../assets/images/hero-bio.jpg") center/cover no-repeat;
   width: 100vw;
-  height: 25vh;
-  backdrop-filter: gr;
+  height: 35vh;
   @include flex-center();
   @include tablet {
     height: 75vh;
+  }
+  @include desktop {
+    height: calc(100vh - $nav-height);
   }
 
   &::before {
@@ -94,16 +100,19 @@ nav {
     z-index: 1;
   }
 
-  h1 {
+  &__header {
     color: $primary-content;
-    font-size: 24px;
+    font-size: 28px;
     margin-right: auto;
     margin-left: 2rem;
     z-index: 999;
-    @include font-regular;
+    @include font-semibold;
     @include tablet {
-      font-size: 60px;
+
       margin-left: 4rem;
+    }
+    @include desktop {
+      margin-left: 6rem;
     }
   }
 }
@@ -114,17 +123,25 @@ main {
   padding: 16px 24px;
   overflow-x: hidden;
   @include tablet {
-    @include grid-container($columns: repeat(12, minmax(auto, 1fr)), $gap: 24px);
+    @include grid-container($columns: repeat(12, minmax(auto, 1fr)));
+  }
+  @include desktop {
+    @include grid-container($columns: repeat(12, minmax(63px, 1fr)));
   }
 
   .main__header {
     margin: 1rem 0;
-    font-size: 24px;
+    font-size: 28px;
     @include font-regular();
     @include tablet {
       margin: 2rem 0 1rem 2rem;
       font-size: 36px;
       grid-column: span 12;
+    }
+    @include desktop {
+      margin: 2rem 0 1rem 2rem;
+      font-size: 36px;
+      grid-column: 2/-1;
     }
   }
 
@@ -133,6 +150,9 @@ main {
     @include tablet {
       grid-column: 2/12;
     }
+    @include desktop {
+      grid-column: 3/11;
+    }
   }
 
   .main__quote {
@@ -140,60 +160,82 @@ main {
     margin-top: 0.5rem;
     line-height: 18px;
     letter-spacing: 1px;
-    @include font-regular;
+    grid-column: 2/12;
+    @include font-semibold();
     @include tablet {
       font-size: 20px;
       line-height: 28px;
-      grid-column: 2/12;
-      @include font-semibold();
+    }
+    @include desktop {
+      font-size: 24px;
+      line-height: 28px;
+      grid-column: 3/11;
     }
 
     .main__quote--footer {
       font-size: 13px;
-      margin-top: 0.5rem;
+      margin-top: 1rem;
       @include tablet {
         font-size: 18px;
-        @include font-regular();
+        @include font-semibold();
+      }
+      @include desktop {
+        font-size: 20px;
+        @include font-semibold();
       }
     }
   }
 
   .content {
     margin: 1.5rem 0;
+    grid-column: 2/12;
     @include tablet {
       @include grid-container($columns: repeat(12, 1fr));
-      grid-column: 2/12;
+    }
+    @include desktop {
+      @include grid-container($columns: repeat(12, minmax(auto, 1fr)));
+      grid-column: 3/11;
     }
 
     .content__title {
       font-size: 14px;
       margin-bottom: 1rem;
+      grid-column: span 12;
       @include font-regular;
       @include tablet {
         font-size: 24px;
-        grid-column: span 12;
+      }
+      @include desktop {
+        font-size: 32px;
       }
     }
 
     .content__description {
       font-size: 13px;
       line-height: 22px;
+      grid-column: span 6;
+      margin-bottom: 1rem;
       @include font-light;
       @include tablet {
         font-size: 14px;
-        grid-column: span 6;
+        line-height: 26px;
+      }
+      @include desktop {
+        font-size: 16px;
+        line-height: 26px;
       }
     }
 
     .content__description2 {
-      margin-top: 1rem;
       font-size: 13px;
       line-height: 22px;
+      grid-column: span 6;
       @include font-light;
       @include tablet {
-        margin-top: 0;
         font-size: 14px;
-        grid-column: span 6;
+      }
+      @include desktop {
+        font-size: 16px;
       }
     }
   }
@@ -203,39 +245,67 @@ main {
 .photo-gallery {
   background: $secondary-content;
   width: 100%;
+  padding: 16px 0;
   @include tablet {
     padding: 20px 0;
+    @include grid-container(repeat(12, minmax(auto, 1fr)), 24px);
+  }
+  @include desktop {
+    @include grid-container(repeat(12, minmax(63px, 1fr)), 24px);
   }
 
   h1 {
     font-size: 24px;
-    margin-left: 16px;
-    padding-top: 16px;
-    @include font-regular();
+    grid-column: 1/-1;
+    margin: 8px 16px;
+    height: 100%;
+    @include font-semibold();
     @include tablet {
       font-size: 36px;
-      margin-left: 56px;
+      margin: 16px 36px 8px 36px;
+      @include font-semibold();
+    }
+    @include desktop {
+      font-size: 36px;
+      grid-column: 2/-1;
+      margin: 36px 36px 8px 0;
+      padding: unset;
+      @include font-semibold();
     }
   }
 
-  .image-container {
-    padding: 16px;
+  .image-grid {
+    grid-column: 1/-1;
+    margin: 0 16px;
     @include grid-container();
     @include tablet {
-      @include grid-container(repeat(12, minmax(auto, 1fr)), 16px);
+      @include grid-container(repeat(12, minmax(auto, 1fr)), 24px);
       margin: 0 36px;
     }
-  
+    @include desktop {
+      @include grid-container(repeat(12, minmax(63px, 1fr)), 24px);
+      grid-column: 2/12;
+      margin: 0 auto;
+    }
+
     img {
       grid-column: span 6;
       width: 100%;
       @include tablet {
         grid-column: span 4;
       }
+      @include desktop {
+        grid-column: span 4;
+      }
+
+      &:hover {
+        transition: all .1s linear;
+        box-shadow: 0 0 8px gray;
+        transform: scale(1.01)
+      }
     }
   }
 }
-
 
 // FOOTER
 footer {
@@ -243,35 +313,125 @@ footer {
   color: $primary-content;
   padding: 24px 16px;
   @include font-light();
-
-  > * {
-    margin-bottom: 1rem;
+  @include  tablet {
+    padding: 8px 32px;
+    @include grid-container($columns: repeat(3, minmax(auto, 1fr)), $gap: 16px);
   }
+  @include  desktop {
+    @include grid-container($columns: repeat(6, minmax(auto, 1fr)), $gap: 36px);
+  }
+
+  // > * {
+  //   margin-bottom: 1rem;
+  // }
 
   .footer__header {
     font-size: 24px;
+    grid-column: 1/2;
+    margin-top: auto;
+    margin-bottom: 1rem;
+    text-wrap: nowrap;
     @include font-regular();
+    @include tablet {
+      margin-bottom: unset;
+      font-size: 36px;
+      @include font-semibold();
+    }
+    @include desktop {
+      margin-bottom: unset;
+      font-size: 36px;
+      grid-column: 2/3;
+      @include font-semibold();
+    }
   }
 
   .footer__image-container {
+    grid-column: 2/3;
+    margin-top: auto;
+    @include desktop {
+      grid-column: 3/4;
+    }
 
     img {
       margin-right: 1.5rem;
+      cursor: pointer;
+    }
+  }
+
+  .footer__address {
+    grid-column: 1/2;
+
+    @include desktop {
+      grid-column: 2/3;
+    }
+  }
+
+  .footer__booking-NA {
+    grid-column: 2/3;
+
+    @include desktop {
+      grid-column: 3/4;
+    }
+  }
+
+  .footer__booking-EU {
+    grid-column: 3/4;
+
+    @include desktop {
+      grid-column: 4/5;
     }
   }
 
   .footer__subheader {
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 2rem;
     @include font-bold();
   }
 
+  .content-block {
+    font-size: 14px;
+    margin: 24px 0;
+    @include font-light();
+  }
+
   .footer__logo {
     margin-top: 3rem;
+    grid-column: 3/-1;
+    grid-row: 1/2;
     @include font-light();
+    @include tablet {
+      margin-left: auto;
+    }
+
+    @include desktop {
+      grid-column: 5/-1;
+      text-align: center;
+    }
   }
 
   .copyright {
     font-size: 13px;
+    grid-column: 1/-1;
+    grid-row: 3/4;
+    @include tablet {
+      margin-top: 32px;
+    }
+    @include desktop {
+      grid-column: 2/-1;
+    }
+  }
+}
+
+// Global media queries
+@media (min-width: 767px) {
+  nav {
+    @include flex-nav();
+  }
+
+  .hero {
+    .hero__header {
+      @include font-semibold;
+      font-size: 60px;
+    }
   }
 }
