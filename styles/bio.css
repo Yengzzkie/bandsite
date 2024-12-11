@@ -448,7 +448,7 @@ footer {
 @media (min-width: 1280px) {
   footer {
     display: grid;
-    grid-template-columns: repeat(6, minmax(auto, 1fr));
+    grid-template-columns: repeat(12, minmax(63px, 1fr));
     grid-auto-rows: minmax(100px, auto);
     gap: 36px;
   }
@@ -475,6 +475,8 @@ footer .footer__header {
     margin-bottom: unset;
     font-size: 36px;
     grid-column: 2/3;
+    text-wrap: nowrap;
+    line-height: 32px;
     font-family: "Nunito-Bold", sans-serif;
     font-weight: 500;
   }
@@ -485,7 +487,7 @@ footer .footer__image-container {
 }
 @media (min-width: 1280px) {
   footer .footer__image-container {
-    grid-column: 3/4;
+    grid-column: 4/6;
   }
 }
 footer .footer__image-container img {
@@ -497,7 +499,7 @@ footer .footer__address {
 }
 @media (min-width: 1280px) {
   footer .footer__address {
-    grid-column: 2/3;
+    grid-column: 2/4;
   }
 }
 footer .footer__booking-NA {
@@ -505,7 +507,7 @@ footer .footer__booking-NA {
 }
 @media (min-width: 1280px) {
   footer .footer__booking-NA {
-    grid-column: 3/4;
+    grid-column: 5/7;
   }
 }
 footer .footer__booking-EU {
@@ -513,7 +515,7 @@ footer .footer__booking-EU {
 }
 @media (min-width: 1280px) {
   footer .footer__booking-EU {
-    grid-column: 4/5;
+    grid-column: 8/10;
   }
 }
 footer .footer__subheader {
@@ -542,7 +544,7 @@ footer .footer__logo {
 }
 @media (min-width: 1280px) {
   footer .footer__logo {
-    grid-column: 5/-1;
+    grid-column: 8/-1;
     text-align: center;
   }
 }
