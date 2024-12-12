@@ -155,6 +155,7 @@ nav ul li:hover::after {
   margin-right: auto;
   margin-left: 2rem;
   z-index: 999;
+  animation: slideToRight 0.5s linear;
   font-family: "Nunito-Bold", sans-serif;
   font-weight: 500;
 }
@@ -166,6 +167,16 @@ nav ul li:hover::after {
 @media (min-width: 1280px) {
   .hero__header {
     margin-left: 6rem;
+  }
+}
+@keyframes slideToRight {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 

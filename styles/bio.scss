@@ -106,13 +106,25 @@ nav {
     margin-right: auto;
     margin-left: 2rem;
     z-index: 999;
+    animation: slideToRight .5s linear;
+    
     @include font-semibold;
     @include tablet {
-
       margin-left: 4rem;
     }
     @include desktop {
       margin-left: 6rem;
+    }
+
+    @keyframes slideToRight {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
   }
 }
