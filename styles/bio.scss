@@ -147,6 +147,7 @@ main {
 
   img {
     width: 100%;
+    box-shadow: 0 0 8px #2c2c2c;
     @include tablet {
       grid-column: 2/12;
     }

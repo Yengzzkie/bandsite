@@ -45,6 +45,11 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 // MIXINS
 @mixin grid-container($columns: repeat(6, minmax(auto, 1fr)), $gap: 24px) {
   display: grid;
