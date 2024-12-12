@@ -106,7 +106,7 @@ nav {
     margin-right: auto;
     margin-left: 2rem;
     z-index: 999;
-    animation: slideToRight .5s linear;
+    animation: slideToRight .8s linear;
     
     @include font-semibold;
     @include tablet {
@@ -117,16 +117,22 @@ nav {
     }
 
     @keyframes slideToRight {
-      from {
-        transform: translateX(-100%);
-        opacity: 0;
+      0% {
+        transform: translateX(-100%) skew(45deg);
+        opacity: .1;
       }
-      to {
+      50% {
+        transform: translateX(15%) skew(-20deg);
+        opacity: .5;
+      }
+      100% {
         transform: translateX(0);
         opacity: 1;
       }
     }
   }
+
+  
 }
 
 // MAIN

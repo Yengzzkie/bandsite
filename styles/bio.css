@@ -155,7 +155,7 @@ nav ul li:hover::after {
   margin-right: auto;
   margin-left: 2rem;
   z-index: 999;
-  animation: slideToRight 0.5s linear;
+  animation: slideToRight 0.8s linear;
   font-family: "Nunito-Bold", sans-serif;
   font-weight: 500;
 }
@@ -170,11 +170,15 @@ nav ul li:hover::after {
   }
 }
 @keyframes slideToRight {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
+  0% {
+    transform: translateX(-100%) skew(45deg);
+    opacity: 0.1;
   }
-  to {
+  50% {
+    transform: translateX(15%) skew(-20deg);
+    opacity: 0.5;
+  }
+  100% {
     transform: translateX(0);
     opacity: 1;
   }
