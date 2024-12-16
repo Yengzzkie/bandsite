@@ -450,6 +450,62 @@ main .content .content__description2 {
   transform: scale(1.01);
 }
 
+.comment-section {
+  padding: 0 16px;
+}
+.comment-section .comment__header {
+  font-family: "Nunito-Bold", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+}
+.comment-section .form-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.comment-section .form-container .avatar-container {
+  margin: 18px 0;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+.comment-section .form-container .avatar-container .avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+.comment-section .form-container form {
+  flex: 1;
+  margin: 0 16px;
+}
+.comment-section .form-container form .input-container {
+  flex: 1;
+  flex-shrink: 0;
+  margin: 16px 0;
+  width: 100%;
+}
+.comment-section .form-container form .input-container label {
+  font-family: "Nunito-Bold", sans-serif;
+  font-weight: 500;
+  color: #afafaf;
+}
+.comment-section .form-container form .input-container input, .comment-section .form-container form .input-container textarea {
+  border-radius: 5px;
+  border: 1px solid #afafaf;
+  width: 100%;
+  padding: 12px 6px;
+}
+.comment-section .form-container form .form-btn {
+  font-family: "Nunito-Bold", sans-serif;
+  font-weight: 500;
+  background: #323232;
+  color: #ffffff;
+  font-size: 18px;
+  border-radius: 6px;
+  width: 100%;
+  padding: 8px 16px;
+}
+
 footer {
   background: #323232;
   color: #ffffff;

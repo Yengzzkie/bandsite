@@ -31,7 +31,7 @@
 
 // Variables
 $primary-dark: #323232;
-$primary-light: #afafaf;
+$primary-light: #afafaf; 
 $primary-content: #ffffff;
 $secondary-dark: #000000;
 $secondary-light: #e1e1e1;
@@ -58,11 +58,11 @@ a {
   gap: $gap;
 }
 
-@mixin flex-center($justify: center, $direction: row) {
+@mixin flex-center($justify: center, $align-items: center, $direction: row) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
-  align-items: center;
+  align-items: $align-items;
 }
 
 @mixin cta-default {

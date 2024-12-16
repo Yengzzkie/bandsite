@@ -326,6 +326,66 @@ main {
   }
 }
 
+// COMMENT SECTION
+.comment-section {
+  padding: 0 16px;
+
+  .comment__header {
+    @include font-bold();
+    font-size: 40px;
+  }
+
+  .form-container {
+    @include flex-center(space-between, flex-start);
+
+    .avatar-container {
+      margin: 18px 0;
+      max-width: fit-content;
+
+      .avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+      }
+    }
+
+    form {
+      flex: 1;
+      margin: 0 16px;
+
+      .input-container {
+        flex: 1;
+        flex-shrink: 0;
+        margin: 16px 0;
+        width: 100%;
+  
+        label {
+          @include font-semibold();
+          color: $primary-light;
+        }
+    
+        input, textarea {
+          border-radius: 5px;
+          border: 1px solid $primary-light;
+          width: 100%;
+          padding: 12px 6px;
+        }
+      }
+  
+      .form-btn {
+        @include font-semibold();
+        background: $primary-dark;
+        color: $primary-content;
+        font-size: 18px;
+        border-radius: 6px;
+        width: 100%;
+        padding: 8px 16px
+      }
+    }
+  }
+}
+
+
 // FOOTER
 footer {
   background: $primary-dark;
