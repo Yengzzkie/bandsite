@@ -328,23 +328,26 @@ main {
 
 // COMMENT SECTION
 .comment-section {
-  padding: 0 16px;
+  padding: 16px;
 
   .comment__header {
-    @include font-bold();
-    font-size: 40px;
+    @include font-semibold();
+    font-size: 24px;
   }
 
   .form-container {
     @include flex-center(space-between, flex-start);
 
     .avatar-container {
-      margin: 18px 0;
-      max-width: fit-content;
+      background: $secondary-light;
+      border-radius: 100%;
+      margin: 38px 0;
+      width: 40px;
+      height: 40px;
 
       .avatar {
-        width: 60px;
-        height: 60px;
+        width: inherit;
+        height: inherit;
         border-radius: 100%;
       }
     }
@@ -365,10 +368,21 @@ main {
         }
     
         input, textarea {
-          border-radius: 5px;
+          border-radius: 4px;
           border: 1px solid $primary-light;
+          outline: none;
+          min-height: 36px;
           width: 100%;
-          padding: 12px 6px;
+          padding: 12px;
+          margin-top: 4px;
+
+          &:focus, &:active {
+            border-color: $primary-dark;
+          }
+
+          &:focus:invalid {
+            border-color: $error;
+          }
         }
       }
   
@@ -379,7 +393,12 @@ main {
         font-size: 18px;
         border-radius: 6px;
         width: 100%;
-        padding: 8px 16px
+        padding: 8px 16px;
+        cursor: pointer;
+
+        &:hover {
+          background: $secondary-dark
+        }
       }
     }
   }

@@ -31,6 +31,10 @@ a {
   color: inherit;
 }
 
+hr {
+  margin: 16px;
+}
+
 nav {
   background: #323232;
   color: #ffffff;
@@ -451,12 +455,12 @@ main .content .content__description2 {
 }
 
 .comment-section {
-  padding: 0 16px;
+  padding: 16px;
 }
 .comment-section .comment__header {
   font-family: "Nunito-Bold", sans-serif;
-  font-weight: 700;
-  font-size: 40px;
+  font-weight: 500;
+  font-size: 24px;
 }
 .comment-section .form-container {
   display: flex;
@@ -465,13 +469,15 @@ main .content .content__description2 {
   align-items: flex-start;
 }
 .comment-section .form-container .avatar-container {
-  margin: 18px 0;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
+  background: #e1e1e1;
+  border-radius: 100%;
+  margin: 38px 0;
+  width: 40px;
+  height: 40px;
 }
 .comment-section .form-container .avatar-container .avatar {
-  width: 60px;
-  height: 60px;
+  width: inherit;
+  height: inherit;
   border-radius: 100%;
 }
 .comment-section .form-container form {
@@ -490,10 +496,19 @@ main .content .content__description2 {
   color: #afafaf;
 }
 .comment-section .form-container form .input-container input, .comment-section .form-container form .input-container textarea {
-  border-radius: 5px;
+  border-radius: 4px;
   border: 1px solid #afafaf;
+  outline: none;
+  min-height: 36px;
   width: 100%;
-  padding: 12px 6px;
+  padding: 12px;
+  margin-top: 4px;
+}
+.comment-section .form-container form .input-container input:focus, .comment-section .form-container form .input-container input:active, .comment-section .form-container form .input-container textarea:focus, .comment-section .form-container form .input-container textarea:active {
+  border-color: #323232;
+}
+.comment-section .form-container form .input-container input:focus:invalid, .comment-section .form-container form .input-container textarea:focus:invalid {
+  border-color: #D22D2D;
 }
 .comment-section .form-container form .form-btn {
   font-family: "Nunito-Bold", sans-serif;
@@ -504,6 +519,10 @@ main .content .content__description2 {
   border-radius: 6px;
   width: 100%;
   padding: 8px 16px;
+  cursor: pointer;
+}
+.comment-section .form-container form .form-btn:hover {
+  background: #000000;
 }
 
 footer {

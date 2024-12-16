@@ -36,6 +36,7 @@ $primary-content: #ffffff;
 $secondary-dark: #000000;
 $secondary-light: #e1e1e1;
 $secondary-content: #fafafa;
+$error:  #D22D2D;
 $nunito-light: "Nunito-Light", sans-serif;
 $nunito-regular: "Nunito-Regular", sans-serif;
 $nunito-bold: "Nunito-Bold", sans-serif;
@@ -48,6 +49,10 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+hr {
+  margin: 16px;
 }
 
 // MIXINS
@@ -99,6 +104,11 @@ a {
   height: $nav-height;
   @include flex-center(flex-start);
 }
+
+@mixin active {
+  border: 1px solid $secondary-light;
+}
+
 
 // Screen media queries
 @mixin mobile {
