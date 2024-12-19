@@ -453,6 +453,12 @@ main .content .content__description2 {
 .comment-section {
   padding: 16px;
 }
+@media (min-width: 1280px) {
+  .comment-section {
+    max-width: 50vw;
+    margin: 0 auto;
+  }
+}
 .comment-section dialog {
   background: #ffacac;
   border: 1.2px solid #D22D2D;
@@ -595,29 +601,31 @@ main .content .content__description2 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
 }
-.comment-section .comments .comments__item .comments__item--header {
+.comment-section .comments .comments__item .comments__data-wrapper {
+  width: 100%;
+}
+.comment-section .comments .comments__item .comments__data-wrapper .comments__item--header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-.comment-section .comments .comments__item .comments__item--header .comments__item-name {
+.comment-section .comments .comments__item .comments__data-wrapper .comments__item--header .comments__item-name {
   font-family: "Nunito-Bold", sans-serif;
   font-weight: 500;
 }
-.comment-section .comments .comments__item .comments__item--header .comments__item-date {
+.comment-section .comments .comments__item .comments__data-wrapper .comments__item--header .comments__item-date {
   font-family: "Nunito-Regular", sans-serif;
   font-weight: 400;
   color: #afafaf;
   margin-left: auto;
 }
-.comment-section .comments .comments__item .comments__item-text {
+.comment-section .comments .comments__item .comments__data-wrapper .comments__item-text {
   font-family: "Nunito-Regular", sans-serif;
   font-weight: 400;
   padding-top: 10px;
+  min-width: 100%;
 }
 
 footer {

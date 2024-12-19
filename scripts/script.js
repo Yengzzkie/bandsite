@@ -43,7 +43,10 @@ function fireModal(message, error) {
   }
 
   modal.showModal();
-  setTimeout(() => {modal.close()}, 2500)
+  setTimeout(() => {
+    modal.close();
+    modal.classList.remove('success')
+  }, 2500)
 
   const closeHandler = () => {
     modal.close()
@@ -74,8 +77,8 @@ function addNewComment(e) {
     const nameInput = document.getElementById('input-name');
     const commentInput = document.getElementById('input-comment');
     const commentDate = new Date().toLocaleDateString({ year: "numeric", date: "2-digit", month: "2-digit" })
-    const newComment = new Comment(nameInput.value, commentInput.value, commentDate.value)
-
+    const newComment = new Comment(nameInput.value, commentInput.value, commentDate)
+  console.log(newComment)
     if (nameInput.value === "" || commentInput.value === "") {
       return fireModal("Missing input field", true)
     }
@@ -101,8 +104,8 @@ function renderComments() {
     COMMENTS.forEach((comment) => {
         const commentItem = document.createElement('li')
         const avatar = document.createElement('img')
-        const nameEl = document.createElement('span')
-        const dateEl = document.createElement('span')
+        const nameEl = document.createElement('p')
+        const dateEl = document.createElement('p')
         const commentEl = document.createElement('p')
         const content = document.createElement('div');
         const nameDateWrapper = document.createElement('div')
@@ -111,6 +114,7 @@ function renderComments() {
         // add the predefined classes to add styling to the elements
         commentItem.classList.add('comments__item')
         avatar.classList.add('avatar')
+        content.classList.add('comments__data-wrapper')
         nameDateWrapper.classList.add('comments__item--header')
         nameEl.classList.add('comments__item-name')
         dateEl.classList.add('comments__item-date')

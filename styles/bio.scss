@@ -327,6 +327,10 @@ main {
 // COMMENT SECTION
 .comment-section {
   padding: 16px;
+  @include desktop {
+    max-width: 50vw;
+    margin: 0 auto;
+  };
 
   dialog {
     background: $error-background;
@@ -478,25 +482,29 @@ main {
 
     .comments__item {
       @include flex-center();
-      max-width: fit-content;
 
-      .comments__item--header {
-        @include flex-center($justify: space-between);
+      .comments__data-wrapper {
+        width: 100%;
 
-        .comments__item-name {
-          @include font-semibold();
+        .comments__item--header {
+          @include flex-center($justify: space-between);
+  
+          .comments__item-name {
+            @include font-semibold();
+          }
+  
+          .comments__item-date {
+            @include font-regular();
+            color: $primary-light;
+            margin-left: auto;
+          }
         }
-
-        .comments__item-date {
+  
+        .comments__item-text {
           @include font-regular();
-          color: $primary-light;
-          margin-left: auto;
+          padding-top: 10px;
+          min-width: 100%;
         }
-      }
-
-      .comments__item-text {
-        @include font-regular();
-        padding-top: 10px;
       }
     }
   }
