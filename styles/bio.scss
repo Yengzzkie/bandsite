@@ -341,7 +341,7 @@ main {
     .avatar-container {
       background: $secondary-light;
       border-radius: 100%;
-      margin: 38px 0;
+      margin: 42px 16px 0 0;
       width: 40px;
       height: 40px;
 
@@ -354,7 +354,6 @@ main {
 
     form {
       flex: 1;
-      margin: 0 16px;
 
       .input-container {
         flex: 1;
@@ -398,6 +397,57 @@ main {
 
         &:hover {
           background: $secondary-dark
+        }
+      }
+    }
+  }
+
+  hr {
+    border-top: 1px solid $secondary-light;
+    margin: 16px 0;
+    width: 100%;
+  }
+
+  .comments {
+    list-style: none;
+
+    .comments__item {
+      @include flex-center($align-items: flex-start);
+      height: 150px;
+
+      .comments__avatar-container {
+        margin: 0 16px auto 0;
+        height: 100%;
+  
+        .comments__avatar {
+          width: 40px;
+          height: 40px;
+          margin-bottom: auto;
+          border-radius: 100%;
+        }
+      }
+
+      .comments__content {
+        color: $primary-dark;
+        
+        .comments__header {
+          @include flex-center($justify: space-between);
+          width: 100%;
+
+          .username {
+            @include font-semibold();
+          }
+
+          .date {
+            @include font-regular();
+            color: $primary-light;
+            margin-left: auto;
+          }
+        }
+
+        .text {
+          @include font-regular();
+          padding-top: 10px;
         }
       }
     }

@@ -31,10 +31,6 @@ a {
   color: inherit;
 }
 
-hr {
-  margin: 16px;
-}
-
 nav {
   background: #323232;
   color: #ffffff;
@@ -471,7 +467,7 @@ main .content .content__description2 {
 .comment-section .form-container .avatar-container {
   background: #e1e1e1;
   border-radius: 100%;
-  margin: 38px 0;
+  margin: 42px 16px 0 0;
   width: 40px;
   height: 40px;
 }
@@ -482,7 +478,6 @@ main .content .content__description2 {
 }
 .comment-section .form-container form {
   flex: 1;
-  margin: 0 16px;
 }
 .comment-section .form-container form .input-container {
   flex: 1;
@@ -523,6 +518,56 @@ main .content .content__description2 {
 }
 .comment-section .form-container form .form-btn:hover {
   background: #000000;
+}
+.comment-section hr {
+  border-top: 1px solid #e1e1e1;
+  margin: 16px 0;
+  width: 100%;
+}
+.comment-section .comments {
+  list-style: none;
+}
+.comment-section .comments .comments__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  height: 150px;
+}
+.comment-section .comments .comments__item .comments__avatar-container {
+  margin: 0 16px auto 0;
+  height: 100%;
+}
+.comment-section .comments .comments__item .comments__avatar-container .comments__avatar {
+  width: 40px;
+  height: 40px;
+  margin-bottom: auto;
+  border-radius: 100%;
+}
+.comment-section .comments .comments__item .comments__content {
+  color: #323232;
+}
+.comment-section .comments .comments__item .comments__content .comments__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.comment-section .comments .comments__item .comments__content .comments__header .username {
+  font-family: "Nunito-Bold", sans-serif;
+  font-weight: 500;
+}
+.comment-section .comments .comments__item .comments__content .comments__header .date {
+  font-family: "Nunito-Regular", sans-serif;
+  font-weight: 400;
+  color: #afafaf;
+  margin-left: auto;
+}
+.comment-section .comments .comments__item .comments__content .text {
+  font-family: "Nunito-Regular", sans-serif;
+  font-weight: 400;
+  padding-top: 10px;
 }
 
 footer {
