@@ -80,42 +80,24 @@
         <div class="avatar-container">
           <img class="avatar" src="./assets/images/Mohan-muruge.jpg" alt="avatar">
         </div>
-        <form>
+        <form id="comment-form">
           <div class="input-container">
             <label for="">NAME</label>
-            <input type="text" name="name" placeholder="Enter your name" required >
+            <input id="input-name" type="text" name="name" placeholder="Enter your name" required >
           </div>
 
           <div class="input-container">
             <label for="comment">COMMENT</label>
-            <textarea name="comment" rows="5" placeholder="Add a new comment" required></textarea>
+            <textarea id="input-comment" name="comment" rows="5" placeholder="Add a new comment" required></textarea>
           </div>
 
-          <button type="submit" class="form-btn">COMMENT</button>
+          <button class="submit-btn">COMMENT</button>
         </form>
       </div>
       <hr>
 
       <!-- COMMENTS LIST -->
-      <ul class="comments" id="comments-container">
-        <li>
-          <div class="comments__item">
-            <div class="comments__avatar-container">
-              <img class="comments__avatar" src="./assets/images/Mohan-muruge.jpg" alt="User avatar">
-            </div>
-            <div class="comments__content">
-              <div class="comments__header">
-                <span class="username">Victor Pinto</span>
-                <span class="date">11/02/2023</span>
-              </div>
-              <p class="text">
-                This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.
-              </p>
-            </div>
-          </div>
-          <hr>
-        </li>
-      </ul>
+      <ul class="comments" id="comments-container"></ul>
       
     </section>
 

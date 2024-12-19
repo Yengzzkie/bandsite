@@ -505,7 +505,7 @@ main .content .content__description2 {
 .comment-section .form-container form .input-container input:focus:invalid, .comment-section .form-container form .input-container textarea:focus:invalid {
   border-color: #D22D2D;
 }
-.comment-section .form-container form .form-btn {
+.comment-section .form-container form .submit-btn {
   font-family: "Nunito-Bold", sans-serif;
   font-weight: 500;
   background: #323232;
@@ -516,7 +516,7 @@ main .content .content__description2 {
   padding: 8px 16px;
   cursor: pointer;
 }
-.comment-section .form-container form .form-btn:hover {
+.comment-section .form-container form .submit-btn:hover {
   background: #000000;
 }
 .comment-section hr {
@@ -527,44 +527,37 @@ main .content .content__description2 {
 .comment-section .comments {
   list-style: none;
 }
+.comment-section .comments .avatar {
+  width: 40px;
+  height: 40px;
+  margin: 0 16px auto 0;
+  border-radius: 100%;
+}
 .comment-section .comments .comments__item {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
-  height: 150px;
+  align-items: center;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
 }
-.comment-section .comments .comments__item .comments__avatar-container {
-  margin: 0 16px auto 0;
-  height: 100%;
-}
-.comment-section .comments .comments__item .comments__avatar-container .comments__avatar {
-  width: 40px;
-  height: 40px;
-  margin-bottom: auto;
-  border-radius: 100%;
-}
-.comment-section .comments .comments__item .comments__content {
-  color: #323232;
-}
-.comment-section .comments .comments__item .comments__content .comments__header {
+.comment-section .comments .comments__item .comments__item--header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
 }
-.comment-section .comments .comments__item .comments__content .comments__header .username {
+.comment-section .comments .comments__item .comments__item--header .comments__item-name {
   font-family: "Nunito-Bold", sans-serif;
   font-weight: 500;
 }
-.comment-section .comments .comments__item .comments__content .comments__header .date {
+.comment-section .comments .comments__item .comments__item--header .comments__item-date {
   font-family: "Nunito-Regular", sans-serif;
   font-weight: 400;
   color: #afafaf;
   margin-left: auto;
 }
-.comment-section .comments .comments__item .comments__content .text {
+.comment-section .comments .comments__item .comments__item-text {
   font-family: "Nunito-Regular", sans-serif;
   font-weight: 400;
   padding-top: 10px;
