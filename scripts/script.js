@@ -31,6 +31,27 @@ const COMMENTS = [
   },
 ];
 
+// error and success modal
+function fireModal(message, error) {
+  const modal = document.querySelector('.modal')
+  const modalText = document.querySelector('.modal__text')
+  const closeModalBtn = document.querySelector('.modal__btn-close')
+  modalText.textContent = message;
+
+  if (!error) {
+    modal.classList.add('success')
+  }
+
+  modal.showModal();
+  setTimeout(() => {modal.close()}, 2500)
+
+  const closeHandler = () => {
+    modal.close()
+    modal.classList.remove('success');
+    closeModalBtn.removeEventListener('click', closeHandler)
+  }
+  closeModalBtn.addEventListener('click', closeHandler);
+}
 
 // click listener that will fire the addNewComment function
 const submitBtn = document.querySelector('.submit-btn');
@@ -39,6 +60,13 @@ submitBtn.addEventListener('click', (e) => {
     addNewComment(e);
 });
 
+// object constructor for new comment
+function Comment(name, comment, date) {
+  this.name = name,
+  this.comment = comment,
+  this.created_at = date
+}
+
 // add new comment to the comment array
 function addNewComment(e) {
     e.preventDefault();
@@ -46,16 +74,21 @@ function addNewComment(e) {
     const nameInput = document.getElementById('input-name');
     const commentInput = document.getElementById('input-comment');
     const commentDate = new Date().toLocaleDateString({ year: "numeric", date: "2-digit", month: "2-digit" })
+    const newComment = new Comment(nameInput.value, commentInput.value, commentDate.value)
 
-    const newComment = { name: nameInput.value, comment: commentInput.value, created_at: commentDate }
+    if (nameInput.value === "" || commentInput.value === "") {
+      return fireModal("Missing input field", true)
+    }
 
     COMMENTS.unshift(newComment); // I could use push instead and sort the date to descending to
+    fireModal("Comment submitted!", false)
     // make sure the new comment appears on top, but unshift is simpler and lesser code to write :)
     
     // clear the input fields after submission of the input values
     nameInput.value = "";
     commentInput.value = "";
     
+    // rerender the comments array to reflect the newly added comment
     renderComments();
 }
 

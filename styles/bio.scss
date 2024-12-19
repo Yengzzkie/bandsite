@@ -106,8 +106,8 @@ nav {
     margin-right: auto;
     margin-left: 2rem;
     z-index: 999;
-    animation: slideToRight .8s linear;
-    
+    animation: slideToRight 0.8s linear;
+
     @include font-semibold;
     @include tablet {
       margin-left: 4rem;
@@ -119,11 +119,11 @@ nav {
     @keyframes slideToRight {
       0% {
         transform: translateX(-100%) skew(45deg);
-        opacity: .1;
+        opacity: 0.1;
       }
       50% {
         transform: translateX(15%) skew(-20deg);
-        opacity: .5;
+        opacity: 0.5;
       }
       100% {
         transform: translateX(0);
@@ -131,8 +131,6 @@ nav {
       }
     }
   }
-
-  
 }
 
 // MAIN
@@ -318,9 +316,9 @@ main {
       }
 
       &:hover {
-        transition: all .1s linear;
+        transition: all 0.1s linear;
         box-shadow: 0 0 8px gray;
-        transform: scale(1.01)
+        transform: scale(1.01);
       }
     }
   }
@@ -329,6 +327,64 @@ main {
 // COMMENT SECTION
 .comment-section {
   padding: 16px;
+
+  dialog {
+    background: $error-background;
+    border: 1.2px solid $error;
+    border-radius: 4px;
+    padding: 3px 10px;
+    margin: 1rem 1rem auto auto;
+    width: fit-content;
+    max-height: fit-content;
+    transform: translateX(200%);
+    animation: slideToLeft .2s linear forwards;
+
+    .modal__btn-close {
+      display: inline-block;
+      line-height: 0;
+      border: 1px solid $error;
+      background: $error;
+      color: $error-background;
+      height: 16px;
+      width: 16px;
+      border-radius: 100%;
+      cursor: pointer;
+    }
+
+    .modal__text {
+      @include font-light();
+      color: $error;
+    }
+
+    @keyframes slideToLeft {
+      from {
+        transform: translateX(200%)
+      }
+      to {
+        transform: translateX(0%)
+      }
+    }
+  }
+
+  dialog::backdrop {
+    background: none;
+  }
+
+  dialog.success {
+    background: $success-background;
+    border-color: $success;
+    color: $success;
+  
+    .modal__btn-close {
+      border-color: $success;
+      background: $success;
+      color: $success-background;
+    }
+  
+    .modal__text {
+      color: $success;
+    }
+  }
 
   .comment__header {
     @include font-semibold();
@@ -360,13 +416,14 @@ main {
         flex-shrink: 0;
         margin: 16px 0;
         width: 100%;
-  
+
         label {
           @include font-semibold();
           color: $primary-light;
         }
-    
-        input, textarea {
+
+        input,
+        textarea {
           border-radius: 4px;
           border: 1px solid $primary-light;
           outline: none;
@@ -375,7 +432,8 @@ main {
           padding: 12px;
           margin-top: 4px;
 
-          &:focus, &:active {
+          &:focus,
+          &:active {
             border-color: $primary-dark;
           }
 
@@ -384,7 +442,7 @@ main {
           }
         }
       }
-  
+
       .submit-btn {
         @include font-semibold();
         background: $primary-dark;
@@ -396,7 +454,7 @@ main {
         cursor: pointer;
 
         &:hover {
-          background: $secondary-dark
+          background: $secondary-dark;
         }
       }
     }
@@ -428,7 +486,7 @@ main {
         .comments__item-name {
           @include font-semibold();
         }
-  
+
         .comments__item-date {
           @include font-regular();
           color: $primary-light;
@@ -450,12 +508,15 @@ footer {
   color: $primary-content;
   padding: 24px 16px;
   @include font-light();
-  @include  tablet {
+  @include tablet {
     padding: 8px 32px;
     @include grid-container($columns: repeat(3, minmax(auto, 1fr)), $gap: 16px);
   }
-  @include  desktop {
-    @include grid-container($columns: repeat(12, minmax(63px, 1fr)), $gap: 36px);
+  @include desktop {
+    @include grid-container(
+      $columns: repeat(12, minmax(63px, 1fr)),
+      $gap: 36px
+    );
   }
 
   // > * {

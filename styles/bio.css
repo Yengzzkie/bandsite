@@ -453,6 +453,59 @@ main .content .content__description2 {
 .comment-section {
   padding: 16px;
 }
+.comment-section dialog {
+  background: #ffacac;
+  border: 1.2px solid #D22D2D;
+  border-radius: 4px;
+  padding: 3px 10px;
+  margin: 1rem 1rem auto auto;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  transform: translateX(200%);
+  animation: slideToLeft 0.2s linear forwards;
+}
+.comment-section dialog .modal__btn-close {
+  display: inline-block;
+  line-height: 0;
+  border: 1px solid #D22D2D;
+  background: #D22D2D;
+  color: #ffacac;
+  height: 16px;
+  width: 16px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.comment-section dialog .modal__text {
+  font-family: "Nunito-Light", sans-serif;
+  font-weight: 300;
+  color: #D22D2D;
+}
+@keyframes slideToLeft {
+  from {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+.comment-section dialog::backdrop {
+  background: none;
+}
+.comment-section dialog.success {
+  background: lightgreen;
+  border-color: green;
+  color: green;
+}
+.comment-section dialog.success .modal__btn-close {
+  border-color: green;
+  background: green;
+  color: lightgreen;
+}
+.comment-section dialog.success .modal__text {
+  color: green;
+}
 .comment-section .comment__header {
   font-family: "Nunito-Bold", sans-serif;
   font-weight: 500;
@@ -490,7 +543,8 @@ main .content .content__description2 {
   font-weight: 500;
   color: #afafaf;
 }
-.comment-section .form-container form .input-container input, .comment-section .form-container form .input-container textarea {
+.comment-section .form-container form .input-container input,
+.comment-section .form-container form .input-container textarea {
   border-radius: 4px;
   border: 1px solid #afafaf;
   outline: none;
@@ -499,10 +553,13 @@ main .content .content__description2 {
   padding: 12px;
   margin-top: 4px;
 }
-.comment-section .form-container form .input-container input:focus, .comment-section .form-container form .input-container input:active, .comment-section .form-container form .input-container textarea:focus, .comment-section .form-container form .input-container textarea:active {
+.comment-section .form-container form .input-container input:focus, .comment-section .form-container form .input-container input:active,
+.comment-section .form-container form .input-container textarea:focus,
+.comment-section .form-container form .input-container textarea:active {
   border-color: #323232;
 }
-.comment-section .form-container form .input-container input:focus:invalid, .comment-section .form-container form .input-container textarea:focus:invalid {
+.comment-section .form-container form .input-container input:focus:invalid,
+.comment-section .form-container form .input-container textarea:focus:invalid {
   border-color: #D22D2D;
 }
 .comment-section .form-container form .submit-btn {
