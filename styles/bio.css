@@ -457,6 +457,7 @@ main .content .content__description2 {
   .comment-section {
     max-width: 50vw;
     margin: 0 auto;
+    padding-top: 4rem;
   }
 }
 .comment-section dialog {
@@ -515,7 +516,14 @@ main .content .content__description2 {
 .comment-section .comment__header {
   font-family: "Nunito-Bold", sans-serif;
   font-weight: 500;
+  color: #323232;
   font-size: 24px;
+}
+@media (min-width: 1280px) {
+  .comment-section .comment__header {
+    font-size: 44px;
+    transform: translateX(-35%);
+  }
 }
 .comment-section .form-container {
   display: flex;
@@ -536,6 +544,10 @@ main .content .content__description2 {
   border-radius: 100%;
 }
 .comment-section .form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex: 1;
 }
 .comment-section .form-container form .input-container {
@@ -578,6 +590,12 @@ main .content .content__description2 {
   width: 100%;
   padding: 8px 16px;
   cursor: pointer;
+}
+@media (min-width: 1280px) {
+  .comment-section .form-container form .submit-btn {
+    width: 40%;
+    align-self: flex-end;
+  }
 }
 .comment-section .form-container form .submit-btn:hover {
   background: #000000;
