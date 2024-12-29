@@ -79,8 +79,8 @@ function addNewComment(e) {
     const commentDate = new Date().toLocaleDateString({ year: "numeric", date: "2-digit", month: "2-digit" })
     const newComment = new Comment(nameInput.value, commentInput.value, commentDate)
   console.log(newComment)
-    if (nameInput.value === "" || commentInput.value === "") {
-      return fireModal("Missing input field", true)
+    if (nameInput.value.trim() === "" || commentInput.value.trim() === "") {
+      return fireModal("Missing input field. Fields cannot be empty", true)
     }
 
     COMMENTS.unshift(newComment); // I could use push instead and sort the date to descending to

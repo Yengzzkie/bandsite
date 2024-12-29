@@ -7,7 +7,8 @@ nav {
   width: 100%;
   padding-top: 0.5rem;
   height: fit-content;
-  @include font-regular;
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
   @include tablet {
     padding: 0 48px;
   }
@@ -20,7 +21,8 @@ nav {
     text-align: center;
     padding: 1rem;
     font-size: 2.5rem;
-    @include font-light();
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
   }
 
   ul {
@@ -39,9 +41,9 @@ nav {
       min-width: 120px;
       text-align: center;
       font-size: 1.2rem;
+      font-weight: 300;
       padding-bottom: 1.5rem;
       cursor: pointer;
-      @include font-light();
       @include tablet {
         @include flex-center();
         padding: unset;
@@ -53,23 +55,13 @@ nav {
         margin: auto 50px;
       }
 
-      &::after {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        content: "";
-        background: $primary-content;
-        height: 3px;
-        width: 0%;
-        transition: all 0.4s linear;
+      &.active {
+        border-bottom: 5px solid white;
       }
 
       &:hover {
-        @include font-bold;
-      }
-
-      &:hover::after {
-        width: 100%;
+        border-bottom: 5px solid white;
+        font-weight: 700;
       }
     }
   }
@@ -103,12 +95,11 @@ nav {
   &__header {
     color: $primary-content;
     font-size: 28px;
+    font-weight: 700;
     margin-right: auto;
     margin-left: 2rem;
     z-index: 999;
     animation: slideToRight 0.8s linear;
-
-    @include font-semibold;
     @include tablet {
       margin-left: 4rem;
     }
@@ -148,7 +139,7 @@ main {
   .main__header {
     margin: 1rem 0;
     font-size: 28px;
-    @include font-regular();
+    font-weight: 500;
     @include tablet {
       margin: 2rem 0 1rem 2rem;
       font-size: 36px;
@@ -174,11 +165,11 @@ main {
 
   .main__quote {
     font-size: 13px;
+    font-weight: 700;
     margin-top: 0.5rem;
     line-height: 18px;
     letter-spacing: 1px;
     grid-column: 2/12;
-    @include font-semibold();
     @include tablet {
       font-size: 20px;
       line-height: 28px;
@@ -191,14 +182,14 @@ main {
 
     .main__quote--footer {
       font-size: 13px;
+      font-weight: 500;
       margin-top: 1rem;
       @include tablet {
         font-size: 18px;
-        @include font-semibold();
       }
       @include desktop {
         font-size: 20px;
-        @include font-semibold();
+        font-weight: 500;
       }
     }
   }
@@ -215,10 +206,10 @@ main {
     }
 
     .content__title {
-      font-size: 14px;
+      font-size: 18px;
+      font-weight: 600;
       margin-bottom: 1rem;
       grid-column: span 12;
-      @include font-regular;
       @include tablet {
         font-size: 24px;
       }
@@ -229,10 +220,10 @@ main {
 
     .content__description {
       font-size: 13px;
+      font-weight: 300;
       line-height: 22px;
       grid-column: span 6;
       margin-bottom: 1rem;
-      @include font-light;
       @include tablet {
         font-size: 14px;
         line-height: 26px;
@@ -245,9 +236,9 @@ main {
 
     .content__description2 {
       font-size: 13px;
+      font-weight: 300;
       line-height: 22px;
       grid-column: span 6;
-      @include font-light;
       @include tablet {
         font-size: 14px;
       }
@@ -273,21 +264,19 @@ main {
 
   h1 {
     font-size: 24px;
+    font-weight: 700;
     grid-column: 1/-1;
     margin: 8px 16px;
     height: 100%;
-    @include font-semibold();
     @include tablet {
       font-size: 36px;
       margin: 16px 36px 8px 36px;
-      @include font-semibold();
     }
     @include desktop {
       font-size: 36px;
       grid-column: 2/-1;
       margin: 36px 36px 8px 0;
       padding: unset;
-      @include font-semibold();
     }
   }
 
@@ -337,7 +326,7 @@ main {
     background: $error-background;
     border: 1.2px solid $error;
     border-radius: 4px;
-    padding: 3px 10px;
+    padding: 10px;
     margin: 1rem 1rem auto auto;
     width: fit-content;
     max-height: fit-content;
@@ -357,7 +346,7 @@ main {
     }
 
     .modal__text {
-      @include font-light();
+      font-weight: 300;
       color: $error;
     }
 
@@ -392,7 +381,7 @@ main {
   }
 
   .comment__header {
-    @include font-semibold();
+    font-weight: 700;
     color: $primary-dark;
     font-size: 24px;
     @include desktop {
@@ -429,7 +418,7 @@ main {
         width: 100%;
 
         label {
-          @include font-semibold();
+          font-weight: 700;
           color: $primary-light;
         }
 
@@ -455,7 +444,7 @@ main {
       }
 
       .submit-btn {
-        @include font-semibold();
+        font-weight: 700;
         background: $primary-dark;
         color: $primary-content;
         font-size: 18px;
@@ -501,18 +490,18 @@ main {
           @include flex-center($justify: space-between);
   
           .comments__item-name {
-            @include font-semibold();
+            font-weight: 700;
           }
   
           .comments__item-date {
-            @include font-regular();
+            font-weight: 500;
             color: $primary-light;
             margin-left: auto;
           }
         }
   
         .comments__item-text {
-          @include font-regular();
+          font-weight: 500;
           padding-top: 10px;
           min-width: 100%;
         }
@@ -526,7 +515,7 @@ footer {
   background: $primary-dark;
   color: $primary-content;
   padding: 24px 16px;
-  @include font-light();
+  font-weight: 300;
   @include tablet {
     padding: 8px 32px;
     @include grid-container($columns: repeat(3, minmax(auto, 1fr)), $gap: 16px);
@@ -544,23 +533,23 @@ footer {
 
   .footer__header {
     font-size: 24px;
+    font-weight: 500;
     grid-column: 1/2;
     margin-top: auto;
     margin-bottom: 1rem;
     text-wrap: nowrap;
-    @include font-regular();
     @include tablet {
       margin-bottom: unset;
       font-size: 36px;
-      @include font-semibold();
+      font-weight: 700;
     }
     @include desktop {
       margin-bottom: unset;
       font-size: 36px;
+      font-weight: 700;
       grid-column: 2/3;
       text-wrap: nowrap;
       line-height: 32px;
-      @include font-semibold();
     }
   }
 
@@ -603,21 +592,21 @@ footer {
 
   .footer__subheader {
     font-size: 16px;
+    font-weight: 700;
     margin-top: 2rem;
-    @include font-bold();
   }
 
   .content-block {
     font-size: 14px;
     margin: 24px 0;
-    @include font-light();
+    font-weight: 300;
   }
 
   .footer__logo {
     margin-top: 3rem;
     grid-column: 3/-1;
     grid-row: 1/2;
-    @include font-light();
+    font-weight: 300;
     @include tablet {
       margin-left: auto;
     }
@@ -648,7 +637,7 @@ footer {
 
   .hero {
     .hero__header {
-      @include font-semibold;
+      font-weight: 700;
       font-size: 60px;
     }
   }
