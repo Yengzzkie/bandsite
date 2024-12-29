@@ -1,4 +1,5 @@
 @import "../partials/typography";
+@import "../partials/mixins";
 
 * {
   box-sizing: border-box;
@@ -28,42 +29,6 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
-
-// MIXINS
-@mixin grid-container($columns: repeat(6, minmax(auto, 1fr)), $gap: 24px) {
-  display: grid;
-  grid-template-columns: $columns;
-  grid-auto-rows: minmax(100px, auto);
-  gap: $gap;
-}
-
-@mixin flex-center($justify: center, $align-items: center, $direction: row) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-  align-items: $align-items;
-}
-
-@mixin cta-default {
-  background: $primary-dark;
-  color: $primary-content;
-}
-
-@mixin cta-hover {
-  background: $secondary-dark;
-  color: $primary-light;
-}
-
-@mixin flex-nav {
-  height: $nav-height;
-  @include flex-center(flex-start);
-}
-
-@mixin active {
-  border: 1px solid $secondary-light;
-}
-
 
 // Screen media queries
 @mixin tablet {

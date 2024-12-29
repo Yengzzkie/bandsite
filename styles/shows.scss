@@ -18,7 +18,7 @@ nav {
   .nav__logo {
     color: $primary-content;
     text-align: center;
-    padding: 1rem;
+    padding: 16px;
     font-size: 2.5rem;
     font-weight: 300;
   }
@@ -39,7 +39,7 @@ nav {
       min-width: 120px;
       text-align: center;
       font-size: 1.2rem;
-      font-weight: 500;
+      font-weight: 300;
       padding-bottom: 1.5rem;
 
       cursor: pointer;
@@ -52,10 +52,6 @@ nav {
         @include flex-center();
         padding: unset;
         margin: auto 50px;
-      }
-
-      li:active {
-        border-bottom: 5px solid white;
       }
 
       &.active {
@@ -73,50 +69,65 @@ nav {
 // HERO
 .hero {
   position: relative;
-  background: url("../assets/images/Photo-gallery-1.jpg") center/cover no-repeat;
+  background: url("../assets/images/Photo-gallery-3.jpg") center/cover no-repeat;
   padding: 2rem 2rem;
   width: 100vw;
-  height: 35vh;
+  height: auto;
   @include flex-center($direction: column, $justify: space-evenly, $align-items: flex-start);
   @include tablet {
     @include flex-center($direction: column, $justify: center, $align-items: flex-start);
     height: 75vh;
   }
   @include desktop {
+    @include flex-center($direction: row, $justify: space-evenly, $align-items: center);
     height: calc(100vh - $nav-height);
   }
 
   iframe {
     border-radius: 5px;
+
+    @include tablet {
+      max-width: 55%;
+    }
+    @include desktop {
+      max-width: 35%;
+    }
   }
 
   &__header-wrapper {
     color: $primary-content;
     margin-bottom: 1rem;
+    @include desktop {
+      max-width: 45%;
+    }
     
-    &__albumTitle {
-      font-size: 20px;
+    .hero__albumTitle {
+      font-size: 16px;
       font-weight: 300;
       margin-right: auto;
+      margin-bottom: 8px;
       z-index: 999;
       animation: slideToRight 0.8s linear;
       @include tablet {
-        font-size: 36px;
+        font-size: 26px;
         margin-bottom: 1.5rem;
+      }
+      @include desktop {
+        font-size: 28px;
       }
     }
 
-    &__header {
-      font-size: 28px;
-      font-weight: 600;
+    .hero__songTitle {
+      font-size: 22px;
+      font-weight: 700;
       margin-right: auto;
-      z-index: 999;
       animation: slideToRight 0.8s linear;
       @include tablet {
+        font-size: 48px;
         margin-bottom: 1rem;
       }
       @include desktop {
-        margin-left: 6rem;
+        font-size: 55px;
       }
 
       @keyframes slideToRight {
@@ -133,6 +144,58 @@ nav {
           opacity: 1;
         }
       }
+    }
+  }
+}
+
+// MAIN CONTENT ***TICKETS***
+.tickets {
+  padding: 48px 16px;
+
+  .tickets__header {
+    margin-bottom: 16px;
+  }
+
+  .tickets__container {
+
+    .ticket__wrapper {
+      padding: 8px 0;
+      margin-top: 8px;
+
+      .label {
+        color: $primary-light;
+        font-size: 14px;
+        font-weight: 300;
+        margin-bottom: 4px;
+      }
+
+      .ticket__date, .ticket__venue, .ticket__location {
+        font-size: 18px;
+        font-weight: 300;
+        margin-bottom: 16px;
+      }
+
+      .ticket__date {
+        font-weight: 600;
+      }
+    }
+
+    .buy-btn {
+      background: $primary-dark;
+      color: $primary-content;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: .5px;
+      border: none;
+      border-radius: 4px;
+      padding: 16px;
+      margin: 16px 0;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .buy-btn:hover {
+      background: $secondary-dark;
     }
   }
 }
