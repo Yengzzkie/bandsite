@@ -623,7 +623,8 @@ main .content .content__description2 {
   margin-left: auto;
 }
 .comment-section .comments .comments__item .comments__data-wrapper .comments__item-text {
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 300;
   padding-top: 10px;
   min-width: 100%;
 }

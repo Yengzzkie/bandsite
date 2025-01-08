@@ -61,40 +61,42 @@ const TICKETS = [
   },
 ];
 
-console.log(TICKETS);
-
 function renderTickets() {
   const ticketContainer = document.querySelector(".tickets__container");
 
   TICKETS.forEach((ticket) => {
-    // create elements
+    // CREATE ELEMENTS
     const ticketWrapper = document.createElement("div");
+    //date object
     const date = document.createElement("p");
     const dateLabel = document.createElement("p");
     const dateObj = document.createElement("div");
+    //venue object
     const venue = document.createElement("p");
     const venueLabel = document.createElement("p");
     const venueObj = document.createElement("div");
+    //location object
     const location = document.createElement("p");
     const locationLabel = document.createElement("p");
     const locationObj = document.createElement("div");
+    //buy button
     const buyBtn = document.createElement("button");
+    //line divider
     const divider = document.createElement("hr");
 
-    // add text contents
+    // ADD TEXT CONTENTS
     dateLabel.textContent = "DATE";
     date.textContent = ticket.date;
 
     venueLabel.textContent = "VENUE";
     venue.textContent = ticket.venue;
-    console.log(ticket.venue);
 
     locationLabel.textContent = "LOCATION";
     location.textContent = ticket.location;
 
     buyBtn.textContent = "BUY TICKETS";
 
-    // add classes
+    // ADD CLASSES
     ticketWrapper.classList.add("ticket__wrapper");
     dateLabel.classList.add("label");
     venueLabel.classList.add("label");
@@ -103,8 +105,11 @@ function renderTickets() {
     venue.classList.add("ticket__venue");
     location.classList.add("ticket__location");
     buyBtn.classList.add("buy-btn");
+    dateObj.classList.add("ticket__wrapper-child");
+    venueObj.classList.add("ticket__wrapper-child");
+    locationObj.classList.add("ticket__wrapper-child");
 
-    // append children
+    // APPEND CHILDREN
     dateObj.append(dateLabel, date);
     venueObj.append(venueLabel, venue);
     locationObj.append(locationLabel, location);

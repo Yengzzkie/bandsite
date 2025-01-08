@@ -69,7 +69,7 @@ nav {
 // HERO
 .hero {
   position: relative;
-  background: url("../assets/images/Photo-gallery-3.jpg") center/cover no-repeat;
+  background: url("../assets/images/hero-shows.jpg") center/cover no-repeat;
   padding: 2rem 2rem;
   width: 100vw;
   height: auto;
@@ -151,28 +151,90 @@ nav {
 // MAIN CONTENT ***TICKETS***
 .tickets {
   padding: 48px 16px;
+  @include desktop {
+    @include flex-center($justify: space-between, $align-items: flex-start);
+  }
 
   .tickets__header {
     margin-bottom: 16px;
+    @include desktop {
+      text-align: center;
+      width: 100%;
+    }
   }
 
   .tickets__container {
+    @include desktop {
+      min-width: 75vw;
+    }
+
+    .table-header {
+      display: none;
+      width: 100%;
+      justify-content: space-between;
+      padding: 0 18px;
+      @include tablet {
+        display: flex;
+      }
+      @include desktop {
+        display: flex;
+      }
+
+      span {
+        color: $primary-light;
+        font-size: 14px;
+        font-weight: 300;
+        flex: 1;
+      }
+    }
 
     .ticket__wrapper {
-      padding: 8px 0;
+      padding: 16px;
       margin-top: 8px;
+      @include tablet {
+        @include flex-center($justify: space-between);
+        padding: 24px 18px;
+      }
+      @include desktop {
+        @include flex-center($justify: space-between, $align-items: center);
+        padding: 24px 18px;
+      }
+
+      .ticket__wrapper-child {
+        flex: 1;
+      }
+
+      &:active {
+        background: $secondary-light;
+      }
+
+      &:hover {
+        background: $secondary-content;
+      }
+
 
       .label {
         color: $primary-light;
         font-size: 14px;
         font-weight: 300;
         margin-bottom: 4px;
+        @include tablet {
+          display: none;
+        }
+        @include desktop {
+          display: none;
+        }
       }
 
       .ticket__date, .ticket__venue, .ticket__location {
         font-size: 18px;
         font-weight: 300;
         margin-bottom: 16px;
+        width: 100%;
+        @include tablet {
+          flex: 1;
+          margin-right: 2rem;
+        }
       }
 
       .ticket__date {
@@ -189,9 +251,15 @@ nav {
       border: none;
       border-radius: 4px;
       padding: 16px;
-      margin: 16px 0;
+      // margin: 16px 0;
       width: 100%;
       cursor: pointer;
+      @include tablet {
+        width: 25%;
+      }
+      @include desktop {
+        max-width: 25%;
+      }
     }
 
     .buy-btn:hover {
