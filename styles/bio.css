@@ -188,41 +188,41 @@ nav ul li:hover {
 main {
   width: 100vw;
   padding: 16px 24px;
-  overflow-x: hidden;
 }
 @media (min-width: 768px) and (max-width: 1279px) {
   main {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(auto, 1fr));
-    grid-auto-rows: minmax(100px, auto);
-    gap: 24px;
+    padding: 24px 96px;
   }
 }
 @media (min-width: 1280px) {
   main {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(63px, 1fr));
-    grid-auto-rows: minmax(100px, auto);
-    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 70vw;
+    margin: 0 auto;
   }
 }
 main .main__header {
   margin: 1rem 0;
   font-size: 28px;
-  font-weight: 500;
+  font-weight: 600;
 }
 @media (min-width: 768px) and (max-width: 1279px) {
   main .main__header {
-    margin: 2rem 0 1rem 2rem;
+    margin: 2rem 0;
     font-size: 36px;
-    grid-column: span 12;
+    transform: translateX(-10%);
   }
 }
 @media (min-width: 1280px) {
   main .main__header {
-    margin: 2rem 0 1rem 2rem;
+    margin: 2rem 0;
     font-size: 36px;
-    grid-column: 2/-1;
+    align-self: flex-start;
+    transform: translateX(-35%);
+    z-index: 999;
   }
 }
 main img {
@@ -241,11 +241,10 @@ main img {
 }
 main .main__quote {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   margin-top: 0.5rem;
   line-height: 18px;
   letter-spacing: 1px;
-  grid-column: 2/12;
 }
 @media (min-width: 768px) and (max-width: 1279px) {
   main .main__quote {
@@ -256,8 +255,8 @@ main .main__quote {
 @media (min-width: 1280px) {
   main .main__quote {
     font-size: 24px;
+    margin-top: 24px;
     line-height: 28px;
-    grid-column: 3/11;
   }
 }
 main .main__quote .main__quote--footer {
@@ -277,29 +276,19 @@ main .main__quote .main__quote--footer {
   }
 }
 main .content {
-  margin: 1.5rem 0;
-  grid-column: 2/12;
-}
-@media (min-width: 768px) and (max-width: 1279px) {
-  main .content {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-auto-rows: minmax(100px, auto);
-    gap: 24px;
-  }
+  margin: 2.5rem 0;
 }
 @media (min-width: 1280px) {
   main .content {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(auto, 1fr));
-    grid-auto-rows: minmax(100px, auto);
-    gap: 24px;
-    grid-column: 3/11;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 main .content .content__title {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 1rem;
   grid-column: span 12;
 }
@@ -311,9 +300,28 @@ main .content .content__title {
 @media (min-width: 1280px) {
   main .content .content__title {
     font-size: 32px;
+    align-self: flex-start;
   }
 }
-main .content .content__description {
+@media (min-width: 768px) and (max-width: 1279px) {
+  main .content .content__paragraph {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+}
+@media (min-width: 1280px) {
+  main .content .content__paragraph {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+}
+main .content .content__paragraph .content__description {
   font-size: 13px;
   font-weight: 300;
   line-height: 22px;
@@ -321,30 +329,30 @@ main .content .content__description {
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) and (max-width: 1279px) {
-  main .content .content__description {
+  main .content .content__paragraph .content__description {
     font-size: 14px;
     line-height: 26px;
   }
 }
 @media (min-width: 1280px) {
-  main .content .content__description {
+  main .content .content__paragraph .content__description {
     font-size: 16px;
     line-height: 26px;
   }
 }
-main .content .content__description2 {
+main .content .content__paragraph .content__description2 {
   font-size: 13px;
   font-weight: 300;
   line-height: 22px;
   grid-column: span 6;
 }
 @media (min-width: 768px) and (max-width: 1279px) {
-  main .content .content__description2 {
+  main .content .content__paragraph .content__description2 {
     font-size: 14px;
   }
 }
 @media (min-width: 1280px) {
-  main .content .content__description2 {
+  main .content .content__paragraph .content__description2 {
     font-size: 16px;
   }
 }
