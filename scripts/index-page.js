@@ -78,7 +78,7 @@ function addNewComment(e) {
     const commentInput = document.getElementById('input-comment');
     const commentDate = new Date().toLocaleDateString({ year: "numeric", date: "2-digit", month: "2-digit" })
     const newComment = new Comment(nameInput.value, commentInput.value, commentDate)
-  console.log(newComment)
+  // console.log(newComment)
     if (nameInput.value.trim() === "" || commentInput.value.trim() === "") {
       return fireModal("Missing input field. Fields cannot be empty", true)
     }
