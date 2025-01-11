@@ -627,11 +627,20 @@ main .content .content__paragraph .content__description2 {
 .comment-section .comments .comments__item .comments__data-wrapper {
   width: 100%;
 }
+.comment-section .comments .comments__item .comments__data-wrapper .comments__item-date-range {
+  font-size: 12px;
+  font-style: italic;
+  color: gray;
+  font-weight: 300;
+  padding-top: 10px;
+  margin-left: auto !important;
+}
 .comment-section .comments .comments__item .comments__data-wrapper .comments__item--header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 8px;
 }
 .comment-section .comments .comments__item .comments__data-wrapper .comments__item--header .comments__item-name {
   font-weight: 700;
@@ -640,12 +649,6 @@ main .content .content__paragraph .content__description2 {
   font-weight: 500;
   color: #afafaf;
   margin-left: auto;
-}
-.comment-section .comments .comments__item .comments__data-wrapper .comments__item-text {
-  font-size: 14px;
-  font-weight: 300;
-  padding-top: 10px;
-  min-width: 100%;
 }
 
 footer {

@@ -507,8 +507,18 @@ main {
       .comments__data-wrapper {
         width: 100%;
 
+        .comments__item-date-range {
+          font-size: 12px;
+          font-style: italic;
+          color: gray;
+          font-weight: 300;
+          padding-top: 10px;
+          margin-left: auto !important;
+        }
+
         .comments__item--header {
           @include flex-center($justify: space-between);
+          margin-bottom: 8px;
   
           .comments__item-name {
             font-weight: 700;
@@ -519,13 +529,6 @@ main {
             color: $primary-light;
             margin-left: auto;
           }
-        }
-  
-        .comments__item-text {
-          font-size: 14px;
-          font-weight: 300;
-          padding-top: 10px;
-          min-width: 100%;
         }
       }
     }
