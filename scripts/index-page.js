@@ -101,7 +101,7 @@ function renderComments() {
     commentListContainer.innerHTML = ""; // clear the content of 'ul' elements to prevent duplication
     // of submitted inputs
 
-    //function to get the difference between posted dates and current date
+    //function to get the difference between posted dates and current date, this is just for 'Diving Deeper' section
     function getDayDifference(date1, date2) {
       const timestamp1 = new Date(date1).getTime();
       const timestamp2 = new Date(date2).getTime();
@@ -124,12 +124,12 @@ function renderComments() {
         const post_date_range =  document.createElement('p')
         const dateDifference = getDayDifference(new Date(), new Date(comment.created_at));
         //setting multiple conditions to display the date difference in days or years,
-        //if the date difference is 0, it will display "just now"
-        //if the date difference is greater than 365 days, it will display the year difference
+        //if the date difference is 0, display "just now"
+        //if the date difference is greater than 365 days, display the year difference
         //if the date difference is less than 365 days, it will display the day difference
         const postedDaysAgo = dateDifference === 0 ? "just now" : dateDifference > 365 ? `${Math.round(dateDifference / 365)} year ago` : `${dateDifference} days ago`;
 
-        console.log(postedDaysAgo)
+        // console.log(postedDaysAgo)
 
         // add the predefined classes to add styling to the elements
         commentItem.classList.add('comments__item')
