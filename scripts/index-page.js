@@ -31,7 +31,16 @@ const COMMENTS = [
   },
 ];
 
-// error and success modal
+const bandSiteApi = new BandSiteApi("randomapikey");
+
+async function testAPI() {
+  const response = await bandSiteApi.getComments();
+  console.log(response?.data)
+}
+
+testAPI();
+
+//////////////////// ERROR AND SUCCESS MODAL //////////////////////////
 function fireModal(message, error) {
   const modal = document.querySelector('.modal')
   const modalText = document.querySelector('.modal__text')
@@ -56,20 +65,20 @@ function fireModal(message, error) {
   closeModalBtn.addEventListener('click', closeHandler);
 }
 
-// click listener that will fire the addNewComment function
-const submitBtn = document.querySelector('.submit-btn');
-submitBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    addNewComment(e);
-});
+// submit listener that will call the addNewComment function
+const form = document.getElementById('comment-form');
+form.addEventListener('submit', addNewComment);
 
 // object constructor for new comment
-function Comment(name, comment, date) {
-  this.name = name,
-  this.comment = comment,
-  this.created_at = date
+class Comment {
+  constructor(name, comment, date) {
+    this.name = name,
+    this.comment = comment,
+    this.created_at = date
+  }
 }
 
+//////////////////// ADD NEW COMMENT FUNCTION //////////////////////////
 // add new comment to the comment array
 function addNewComment(e) {
     e.preventDefault();
@@ -78,24 +87,21 @@ function addNewComment(e) {
     const commentInput = document.getElementById('input-comment');
     const commentDate = new Date().toLocaleDateString({ year: "numeric", date: "2-digit", month: "2-digit" })
     const newComment = new Comment(nameInput.value, commentInput.value, commentDate)
-  // console.log(newComment)
+
     if (nameInput.value.trim() === "" || commentInput.value.trim() === "") {
       return fireModal("Missing input field. Fields cannot be empty", true)
     }
 
     COMMENTS.unshift(newComment); // I could use push instead and sort the date to descending to
-    fireModal("Comment submitted!", false)
     // make sure the new comment appears on top, but unshift is simpler and lesser code to write :)
-    
-    // clear the input fields after submission of the input values
-    nameInput.value = "";
-    commentInput.value = "";
+    fireModal("Comment submitted!", false)
+    form.reset(); // clear the form after submission
     
     // rerender the comments array to reflect the newly added comment
     renderComments();
 }
 
-// render the comments
+//////////////////// COMMENTS GETTER //////////////////////////
 function renderComments() {
     const commentListContainer = document.querySelector(".comments")
     commentListContainer.innerHTML = ""; // clear the content of 'ul' elements to prevent duplication
@@ -128,8 +134,6 @@ function renderComments() {
         //if the date difference is greater than 365 days, display the year difference
         //if the date difference is less than 365 days, it will display the day difference
         const postedDaysAgo = dateDifference === 0 ? "just now" : dateDifference > 365 ? `${Math.round(dateDifference / 365)} year ago` : `${dateDifference} days ago`;
-
-        // console.log(postedDaysAgo)
 
         // add the predefined classes to add styling to the elements
         commentItem.classList.add('comments__item')

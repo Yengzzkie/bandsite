@@ -64,15 +64,15 @@
     <section class="photo-gallery">
       <h1>Photo Gallery</h1>
       <div class="image-grid">
-        <img src="./assets/images/Photo-gallery-1.jpg" alt="image-1" />
-        <img src="./assets/images/Photo-gallery-2.jpg" alt="image-2" />
-        <img src="./assets/images/Photo-gallery-3.jpg" alt="image-3" />
-        <img src="./assets/images/Photo-gallery-4.jpg" alt="image-4" />
-        <img src="./assets/images/Photo-gallery-5.jpg" alt="image-5" />
-        <img src="./assets/images/Photo-gallery-6.jpg" alt="image-6" />
-        <img src="./assets/images/Photo-gallery-7.jpg" alt="image-7" />
-        <img src="./assets/images/Photo-gallery-8.jpg" alt="image-8" />
-        <img src="./assets/images/Photo-gallery-9.jpg" alt="image-9" />
+        <img src="./assets/images/Photo-gallery-1.jpg" alt="party with smoke" />
+        <img src="./assets/images/Photo-gallery-2.jpg" alt="partying lady" />
+        <img src="./assets/images/Photo-gallery-3.jpg" alt="people with raised hands" />
+        <img src="./assets/images/Photo-gallery-4.jpg" alt="lady in stripes" />
+        <img src="./assets/images/Photo-gallery-5.jpg" alt="concert confetti" />
+        <img src="./assets/images/Photo-gallery-6.jpg" alt="band singer" />
+        <img src="./assets/images/Photo-gallery-7.jpg" alt="concert confetti 2" />
+        <img src="./assets/images/Photo-gallery-8.jpg" alt="DJ turntable" />
+        <img src="./assets/images/Photo-gallery-9.jpg" alt="concert confetti 3" />
       </div>
     </section>
 
@@ -88,20 +88,20 @@
       <h1 class="comment__header">Join the Conversation</h1>
       <div class="form-container">
         <div class="avatar-container">
-          <img class="avatar" src="./assets/images/Mohan-muruge.jpg" alt="avatar">
+          <img class="avatar" src="./assets/images/Mohan-muruge.jpg" alt="user avatar">
         </div>
         <form id="comment-form">
           <div class="input-container">
-            <label for="">NAME</label>
+            <label for="input-name">NAME</label>
             <input id="input-name" type="text" name="name" placeholder="Enter your name" required >
           </div>
 
           <div class="input-container">
-            <label for="comment">COMMENT</label>
+            <label for="input-comment">COMMENT</label>
             <textarea id="input-comment" name="comment" rows="5" placeholder="Add a new comment" required></textarea>
           </div>
 
-          <button class="submit-btn">COMMENT</button>
+          <button type="submit" class="submit-btn">COMMENT</button>
         </form>
       </div>
       <hr>
@@ -166,6 +166,8 @@
       <p class="copyright">Copyright The Bees Knees &copy; 2023 All Rights Reserved</p>
     </footer>
 
-  <script src="./scripts/index-page.js"></script>
+  <script src="./scripts/band-site-api.js" defer></script>
+  <script src="./scripts/index-page.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>
 </html>
