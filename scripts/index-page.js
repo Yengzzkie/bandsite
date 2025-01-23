@@ -1,44 +1,42 @@
-const COMMENTS = [
-  {
-    id: 1,
-    name: "Victor Pinto",
-    comment: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
-    created_at: new Date("11/02/2023").toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    }),
-  },
-  {
-    id: 2,
-    name: "Christina Cabrera",
-    comment: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",
-    created_at: new Date("10/28/2023").toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    }),
-  },
-  {
-    id: 3,
-    name: "Isaac Tadesse",
-    comment: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
-    created_at: new Date("10/20/2023").toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    }),
-  },
-];
+// const COMMENTS = [
+//   {
+//     id: 1,
+//     name: "Victor Pinto",
+//     comment: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
+//     created_at: new Date("11/02/2023").toLocaleDateString("en-US", {
+//       day: "2-digit",
+//       month: "2-digit",
+//       year: "numeric",
+//     }),
+//   },
+//   {
+//     id: 2,
+//     name: "Christina Cabrera",
+//     comment: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",
+//     created_at: new Date("10/28/2023").toLocaleDateString("en-US", {
+//       day: "2-digit",
+//       month: "2-digit",
+//       year: "numeric",
+//     }),
+//   },
+//   {
+//     id: 3,
+//     name: "Isaac Tadesse",
+//     comment: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
+//     created_at: new Date("10/20/2023").toLocaleDateString("en-US", {
+//       day: "2-digit",
+//       month: "2-digit",
+//       year: "numeric",
+//     }),
+//   },
+// ];
 
 const bandSiteApi = new BandSiteApi("randomapikey");
 
-async function testAPI() {
+async function fetchComments() {
   const response = await bandSiteApi.getComments();
-  console.log(response?.data)
+  return response?.data.sort((a, b) => b.timestamp - a.timestamp);
 }
-
-testAPI();
 
 //////////////////// ERROR AND SUCCESS MODAL //////////////////////////
 function fireModal(message, error) {
@@ -70,29 +68,32 @@ const form = document.getElementById('comment-form');
 form.addEventListener('submit', addNewComment);
 
 // object constructor for new comment
-class Comment {
-  constructor(name, comment, date) {
-    this.name = name,
-    this.comment = comment,
-    this.created_at = date
-  }
-}
+// class Comment {
+//   constructor(name, comment, date) {
+//     this.name = name,
+//     this.comment = comment,
+//     this.timestamp = date
+//   }
+// }
 
 //////////////////// ADD NEW COMMENT FUNCTION //////////////////////////
 // add new comment to the comment array
-function addNewComment(e) {
+async function addNewComment(e) {
     e.preventDefault();
 
     const nameInput = document.getElementById('input-name');
     const commentInput = document.getElementById('input-comment');
-    const commentDate = new Date().toLocaleDateString({ year: "numeric", date: "2-digit", month: "2-digit" })
-    const newComment = new Comment(nameInput.value, commentInput.value, commentDate)
+    // const commentDate = new Date().toLocaleDateString({ year: "numeric", date: "2-digit", month: "2-digit" })
+    // const newComment = new Comment(nameInput.value, commentInput.value, commentDate)
 
     if (nameInput.value.trim() === "" || commentInput.value.trim() === "") {
       return fireModal("Missing input field. Fields cannot be empty", true)
     }
 
-    COMMENTS.unshift(newComment); // I could use push instead and sort the date to descending to
+    const response = await bandSiteApi.postComment(nameInput.value, commentInput.value);
+    console.log(response)
+
+    // COMMENTS.unshift(newComment); // I could use push instead and sort the date to descending to
     // make sure the new comment appears on top, but unshift is simpler and lesser code to write :)
     fireModal("Comment submitted!", false)
     form.reset(); // clear the form after submission
@@ -102,10 +103,12 @@ function addNewComment(e) {
 }
 
 //////////////////// COMMENTS GETTER //////////////////////////
-function renderComments() {
+async function renderComments() {
     const commentListContainer = document.querySelector(".comments")
     commentListContainer.innerHTML = ""; // clear the content of 'ul' elements to prevent duplication
     // of submitted inputs
+    
+    const COMMENTS = await fetchComments();
 
     //function to get the difference between posted dates and current date, this is just for 'Diving Deeper' section
     function getDayDifference(date1, date2) {
@@ -128,12 +131,12 @@ function renderComments() {
         const nameDateWrapper = document.createElement('div')
         const divider = document.createElement('hr')
         const post_date_range =  document.createElement('p')
-        const dateDifference = getDayDifference(new Date(), new Date(comment.created_at));
+        const dateDifference = getDayDifference(new Date(), new Date(comment.timestamp));
         //setting multiple conditions to display the date difference in days or years,
         //if the date difference is 0, display "just now"
         //if the date difference is greater than 365 days, display the year difference
         //if the date difference is less than 365 days, it will display the day difference
-        const postedDaysAgo = dateDifference === 0 ? "just now" : dateDifference > 365 ? `${Math.round(dateDifference / 365)} year ago` : `${dateDifference} days ago`;
+        const postedDaysAgo = dateDifference === 0 ? "just now" : dateDifference > 365 ? `${Math.round(dateDifference / 365)} years ago` : `${dateDifference} days ago`;
 
         // add the predefined classes to add styling to the elements
         commentItem.classList.add('comments__item')
@@ -146,9 +149,9 @@ function renderComments() {
         commentEl.classList.add('comments__item-text')
         
         // I added random avatar generator to add some vibrancy :)
-        avatar.src = `https://ui-avatars.com/api/?name=${comment.name}&background=random`;
+        avatar.src = `https://api.dicebear.com/9.x/avataaars/svg?backgroundColor=b6e3f4,c0aede,d1d4f9&seed=${comment.name}`;
         nameEl.textContent = comment.name;
-        dateEl.textContent = comment.created_at;
+        dateEl.textContent = new Date(comment.timestamp).toLocaleDateString();
         commentEl.textContent = comment.comment;
         post_date_range.textContent = `posted ${postedDaysAgo}`;
 

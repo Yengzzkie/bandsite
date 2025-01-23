@@ -8,7 +8,7 @@ class BandSiteApi {
     return await axios.get(`${this.baseUrl}/comments?api_key=${this.apiKey}`);
   }
 
-  async postComment(comment) {
-    return await axios.post(`${this.baseUrl}/comments${this.apiKey}`, {comment: comment});
+  async postComment(name, comment) {
+    return await axios.post(`${this.baseUrl}/comments?api_key=${this.apiKey}`, { name, comment });
   }
 }
