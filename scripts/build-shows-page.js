@@ -1,5 +1,5 @@
 // initialize Bandsite API
-const bandSiteApi = new BandSiteApi("4429303f-1a46-570e-be9e-afa17c941d87");
+const bandSiteApi = new BandSiteApi("4429303f-1a46-570e-be9e-afa17c941d8");
 
 // fetch the shows data
 async function fetchShowsData() {

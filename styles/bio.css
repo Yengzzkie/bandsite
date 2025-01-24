@@ -650,6 +650,24 @@ main .content .content__paragraph .content__description2 {
   color: #afafaf;
   margin-left: auto;
 }
+.comment-section .comments .comments__item .comments__data-wrapper .comments__deleteBtn, .comment-section .comments .comments__item .comments__data-wrapper .comments__likeBtn {
+  background: rgb(240, 240, 240);
+  color: rgb(83, 83, 83);
+  max-width: 25px;
+  display: block;
+  margin-left: auto;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px gray;
+  padding: 3px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.comment-section .comments .comments__item .comments__data-wrapper .comments__deleteBtn:hover, .comment-section .comments .comments__item .comments__data-wrapper .comments__likeBtn:hover {
+  background: rgba(212, 212, 212, 0.748);
+  box-shadow: 0 0 0;
+}
 
 footer {
   background: #323232;

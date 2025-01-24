@@ -1,4 +1,4 @@
-const bandSiteApi = new BandSiteApi("4429303f-1a46-570e-be9e-afa17c941d87");
+const bandSiteApi = new BandSiteApi("4429303f-1a46-570e-be9e-afa17c941d8");
 
 async function fetchComments() {
   try {
@@ -52,7 +52,7 @@ async function addNewComment(e) {
   }
 
   try {
-    const response = await bandSiteApi.postComment(
+      await bandSiteApi.postComment(
       nameInput.value,
       commentInput.value
     ); // send the data to the backend
@@ -68,19 +68,32 @@ async function addNewComment(e) {
   }
 }
 
+//////////////////// DELETE COMMENTS //////////////////////////
+async function deleteComment(commentId, commentName) {
+  try {
+    const response = await bandSiteApi.deleteComment(commentId);
+    return response;
+  } catch (error) {
+    console.error("Failed to delete post:", error);
+    throw error;
+  } finally {
+    renderComments(); // rerender comments after successfull deletion of comment
+    fireModal(`Comment from ${commentName} successfully deleted`, false)
+  }
+}
+
 //////////////////// COMMENTS GETTER //////////////////////////
 async function renderComments() {
   const commentListContainer = document.querySelector(".comments");
   commentListContainer.innerHTML = ""; // clear the content of 'ul' elements to prevent duplication
   // of submitted inputs
 
-  const COMMENTS = await fetchComments();
+  const COMMENTS = await fetchComments(); // fetch the comments
 
   //function to get the difference between posted dates and current date, this is just for 'Diving Deeper' section
   function getDayDifference(date1, date2) {
     const timestamp1 = new Date(date1).getTime();
     const timestamp2 = new Date(date2).getTime();
-
     const diffInMilliseconds = Math.abs(timestamp1 - timestamp2);
 
     return Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
@@ -96,6 +109,16 @@ async function renderComments() {
     const nameDateWrapper = document.createElement("div");
     const divider = document.createElement("hr");
     const post_date_range = document.createElement("p");
+    const deleteBtn = document.createElement("img");
+    const likeBtn = document.createElement("img");
+    likeBtn.src = "../assets/icons/like.png"
+    deleteBtn.src = "../assets/icons/bin.png"
+
+    // event listener for delete button
+    deleteBtn.addEventListener("click", () => {
+      deleteComment(comment.id, comment.name)
+    });
+
     const dateDifference = getDayDifference(
       new Date(),
       new Date(comment.timestamp)
@@ -120,6 +143,8 @@ async function renderComments() {
     dateEl.classList.add("comments__item-date");
     post_date_range.classList.add("comments__item-date-range");
     commentEl.classList.add("comments__item-text");
+    deleteBtn.classList.add("comments__deleteBtn");
+    likeBtn.classList.add("comments__likeBtn")
 
     // I added random avatar generator to add some vibrancy :)
     avatar.src = `https://api.dicebear.com/9.x/avataaars/svg?backgroundColor=b6e3f4,c0aede,d1d4f9&seed=${comment.name}`;
@@ -128,8 +153,9 @@ async function renderComments() {
     commentEl.textContent = comment.comment;
     post_date_range.textContent = `posted ${postedDaysAgo}`;
 
+    // append elements
     nameDateWrapper.append(nameEl, dateEl);
-    content.append(nameDateWrapper, commentEl, post_date_range);
+    content.append(nameDateWrapper, commentEl, post_date_range, likeBtn, deleteBtn);
     commentItem.append(avatar, content);
     commentListContainer.append(commentItem, divider);
   });

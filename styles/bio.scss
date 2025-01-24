@@ -530,6 +530,27 @@ main {
             margin-left: auto;
           }
         }
+
+        .comments__deleteBtn, .comments__likeBtn {
+          background: rgb(240, 240, 240);
+          color: rgb(83, 83, 83);
+          max-width: 25px;
+          display: block;
+          margin-left: auto;
+          border: none;
+          border-radius: 3px;
+          box-shadow: 2px 2px 2px gray;
+          padding: 3px;
+          margin-top: 10px;
+          cursor: pointer;
+          transition: box-shadow .2s ease-in-out;
+        }
+
+        .comments__deleteBtn:hover, .comments__likeBtn:hover {
+          background: rgba(212, 212, 212, 0.748);
+
+          box-shadow: 0 0 0;
+        }
       }
     }
   }

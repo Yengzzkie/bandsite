@@ -12,6 +12,10 @@ class BandSiteApi {
     return await axios.post(`${this.baseUrl}/comments?api_key=${this.apiKey}`, { name, comment });
   }
 
+  async deleteComment(id) {
+    return await axios.delete(`${this.baseUrl}/comments/${id}?api_key=${this.apiKey}`)
+  }
+
   async getShows() {
     return await axios.get(`${this.baseUrl}/showdates?api_key=${this.apiKey}`);
   }
