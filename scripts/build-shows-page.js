@@ -1,68 +1,79 @@
-const TICKETS = [
-  {
-    date: new Date("09/09/2024").toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      weekday: "short",
-    }),
-    venue: "Ronald Lane",
-    location: "San Francisco, CA",
-  },
-  {
-    date: new Date("09/17/2024").toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      weekday: "short",
-    }),
-    venue: "Pier 3 East",
-    location: "San Francisco, CA",
-  },
-  {
-    date: new Date("10/12/2024").toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      weekday: "short",
-    }),
-    venue: "View Lounge",
-    location: "San Francisco, CA",
-  },
-  {
-    date: new Date("11/16/2024").toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      weekday: "short",
-    }),
-    venue: "Hyatt Agency",
-    location: "San Francisco, CA",
-  },
-  {
-    date: new Date("11/29/2024").toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      weekday: "short",
-    }),
-    venue: "Moscow Center",
-    location: "San Francisco, CA",
-  },
-  {
-    date: new Date("12/18/2024").toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      weekday: "short",
-    }),
-    venue: "Press Club",
-    location: "San Francisco, CA",
-  },
-];
+// const TICKETS = [
+//   {
+//     date: new Date("09/09/2024").toLocaleDateString("en-US", {
+//       day: "2-digit",
+//       month: "short",
+//       year: "numeric",
+//       weekday: "short",
+//     }),
+//     venue: "Ronald Lane",
+//     location: "San Francisco, CA",
+//   },
+//   {
+//     date: new Date("09/17/2024").toLocaleDateString("en-US", {
+//       day: "2-digit",
+//       month: "short",
+//       year: "numeric",
+//       weekday: "short",
+//     }),
+//     venue: "Pier 3 East",
+//     location: "San Francisco, CA",
+//   },
+//   {
+//     date: new Date("10/12/2024").toLocaleDateString("en-US", {
+//       day: "2-digit",
+//       month: "short",
+//       year: "numeric",
+//       weekday: "short",
+//     }),
+//     venue: "View Lounge",
+//     location: "San Francisco, CA",
+//   },
+//   {
+//     date: new Date("11/16/2024").toLocaleDateString("en-US", {
+//       day: "2-digit",
+//       month: "short",
+//       year: "numeric",
+//       weekday: "short",
+//     }),
+//     venue: "Hyatt Agency",
+//     location: "San Francisco, CA",
+//   },
+//   {
+//     date: new Date("11/29/2024").toLocaleDateString("en-US", {
+//       day: "2-digit",
+//       month: "short",
+//       year: "numeric",
+//       weekday: "short",
+//     }),
+//     venue: "Moscow Center",
+//     location: "San Francisco, CA",
+//   },
+//   {
+//     date: new Date("12/18/2024").toLocaleDateString("en-US", {
+//       day: "2-digit",
+//       month: "short",
+//       year: "numeric",
+//       weekday: "short",
+//     }),
+//     venue: "Press Club",
+//     location: "San Francisco, CA",
+//   },
+// ];
 
-function renderTickets() {
+// initialize Bandsite API
+const bandSiteApi = new BandSiteApi("randomapikey");
+
+// fetch the shows data
+async function fetchShowsData() {
+  const response = await bandSiteApi.getShows();
+  return response?.data;
+}
+
+async function renderTickets() {
   const ticketContainer = document.querySelector(".tickets__container");
+  // assign it to TICKETS variable
+  const TICKETS = await fetchShowsData();
 
   TICKETS.forEach((ticket) => {
     // CREATE ELEMENTS
@@ -86,10 +97,15 @@ function renderTickets() {
 
     // ADD TEXT CONTENTS
     dateLabel.textContent = "DATE";
-    date.textContent = ticket.date;
+    date.textContent = new Date(ticket.date).toLocaleDateString("en-US", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+      weekday: "short"
+    });
 
     venueLabel.textContent = "VENUE";
-    venue.textContent = ticket.venue;
+    venue.textContent = ticket.place;
 
     locationLabel.textContent = "LOCATION";
     location.textContent = ticket.location;

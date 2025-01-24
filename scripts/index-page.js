@@ -67,15 +67,6 @@ function fireModal(message, error) {
 const form = document.getElementById('comment-form');
 form.addEventListener('submit', addNewComment);
 
-// object constructor for new comment
-// class Comment {
-//   constructor(name, comment, date) {
-//     this.name = name,
-//     this.comment = comment,
-//     this.timestamp = date
-//   }
-// }
-
 //////////////////// ADD NEW COMMENT FUNCTION //////////////////////////
 // add new comment to the comment array
 async function addNewComment(e) {
@@ -83,8 +74,6 @@ async function addNewComment(e) {
 
     const nameInput = document.getElementById('input-name');
     const commentInput = document.getElementById('input-comment');
-    // const commentDate = new Date().toLocaleDateString({ year: "numeric", date: "2-digit", month: "2-digit" })
-    // const newComment = new Comment(nameInput.value, commentInput.value, commentDate)
 
     if (nameInput.value.trim() === "" || commentInput.value.trim() === "") {
       return fireModal("Missing input field. Fields cannot be empty", true)
@@ -93,8 +82,6 @@ async function addNewComment(e) {
     const response = await bandSiteApi.postComment(nameInput.value, commentInput.value);
     console.log(response)
 
-    // COMMENTS.unshift(newComment); // I could use push instead and sort the date to descending to
-    // make sure the new comment appears on top, but unshift is simpler and lesser code to write :)
     fireModal("Comment submitted!", false)
     form.reset(); // clear the form after submission
     
