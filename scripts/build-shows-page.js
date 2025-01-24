@@ -1,73 +1,15 @@
-// const TICKETS = [
-//   {
-//     date: new Date("09/09/2024").toLocaleDateString("en-US", {
-//       day: "2-digit",
-//       month: "short",
-//       year: "numeric",
-//       weekday: "short",
-//     }),
-//     venue: "Ronald Lane",
-//     location: "San Francisco, CA",
-//   },
-//   {
-//     date: new Date("09/17/2024").toLocaleDateString("en-US", {
-//       day: "2-digit",
-//       month: "short",
-//       year: "numeric",
-//       weekday: "short",
-//     }),
-//     venue: "Pier 3 East",
-//     location: "San Francisco, CA",
-//   },
-//   {
-//     date: new Date("10/12/2024").toLocaleDateString("en-US", {
-//       day: "2-digit",
-//       month: "short",
-//       year: "numeric",
-//       weekday: "short",
-//     }),
-//     venue: "View Lounge",
-//     location: "San Francisco, CA",
-//   },
-//   {
-//     date: new Date("11/16/2024").toLocaleDateString("en-US", {
-//       day: "2-digit",
-//       month: "short",
-//       year: "numeric",
-//       weekday: "short",
-//     }),
-//     venue: "Hyatt Agency",
-//     location: "San Francisco, CA",
-//   },
-//   {
-//     date: new Date("11/29/2024").toLocaleDateString("en-US", {
-//       day: "2-digit",
-//       month: "short",
-//       year: "numeric",
-//       weekday: "short",
-//     }),
-//     venue: "Moscow Center",
-//     location: "San Francisco, CA",
-//   },
-//   {
-//     date: new Date("12/18/2024").toLocaleDateString("en-US", {
-//       day: "2-digit",
-//       month: "short",
-//       year: "numeric",
-//       weekday: "short",
-//     }),
-//     venue: "Press Club",
-//     location: "San Francisco, CA",
-//   },
-// ];
-
 // initialize Bandsite API
-const bandSiteApi = new BandSiteApi("randomapikey");
+const bandSiteApi = new BandSiteApi("4429303f-1a46-570e-be9e-afa17c941d87");
 
 // fetch the shows data
 async function fetchShowsData() {
-  const response = await bandSiteApi.getShows();
-  return response?.data;
+  try {
+    const response = await bandSiteApi.getShows();
+    return response?.data;
+  } catch (error) {
+    console.error("Failed fetching Shows data:", error);
+    throw error;
+  }
 }
 
 async function renderTickets() {
@@ -101,7 +43,7 @@ async function renderTickets() {
       day: "2-digit",
       month: "short",
       year: "numeric",
-      weekday: "short"
+      weekday: "short",
     });
 
     venueLabel.textContent = "VENUE";
