@@ -110,9 +110,6 @@ async function renderComments() {
     const divider = document.createElement("hr");
     const post_date_range = document.createElement("p");
     const deleteBtn = document.createElement("img");
-    const likeBtn = document.createElement("img");
-    likeBtn.src = "../assets/icons/like.png"
-    deleteBtn.src = "../assets/icons/bin.png"
 
     // event listener for delete button
     deleteBtn.addEventListener("click", () => {
@@ -144,7 +141,6 @@ async function renderComments() {
     post_date_range.classList.add("comments__item-date-range");
     commentEl.classList.add("comments__item-text");
     deleteBtn.classList.add("comments__deleteBtn");
-    likeBtn.classList.add("comments__likeBtn")
 
     // I added random avatar generator to add some vibrancy :)
     avatar.src = `https://api.dicebear.com/9.x/avataaars/svg?backgroundColor=b6e3f4,c0aede,d1d4f9&seed=${comment.name}`;
@@ -152,10 +148,11 @@ async function renderComments() {
     dateEl.textContent = new Date(comment.timestamp).toLocaleDateString();
     commentEl.textContent = comment.comment;
     post_date_range.textContent = `posted ${postedDaysAgo}`;
+    deleteBtn.src = "../assets/icons/bin.png"
 
     // append elements
     nameDateWrapper.append(nameEl, dateEl);
-    content.append(nameDateWrapper, commentEl, post_date_range, likeBtn, deleteBtn);
+    content.append(nameDateWrapper, commentEl, post_date_range, deleteBtn);
     commentItem.append(avatar, content);
     commentListContainer.append(commentItem, divider);
   });
